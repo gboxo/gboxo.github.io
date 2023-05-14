@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-![Profile Picture](/assets/images/profile_picture.jpg)
+![Profile Picture](/assets/images/profile_picture.jpg){: .profile-picture}
 
 
 
