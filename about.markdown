@@ -3,6 +3,7 @@ layout: page
 title: About
 permalink: /about/
 ---
+<link rel="stylesheet" href="custom.css">
 
 ![Profile Picture](/assets/images/profile_picture.jpg){: .profile-picture}
 
