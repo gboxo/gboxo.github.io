@@ -4,15 +4,19 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+![Profile Picture](/assets/images/profile_picture.jpg)
 
 
-[jekyll-organization]: https://github.com/jekyll
+
+Hi, I'm [Gerard Boxó]!
+
+I'm currently studying [Statistics] at [University of Barcelona]. My main focus is on [Mechanistic Interpretability]. I created this blog to share my experiments, thoughts and walktrougs of [MI]
+In my free time, I enjoy spending time with my loved ones.
+
+### Connect with me:
+
+- [LinkedIn](www.linkedin.com/in/
+gerard-boxó-corominas-183598275
+)
+- [Twitter](https://twitter.com/gboxo)
+- [GitHub](https://github.com/gboxo)
