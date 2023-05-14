@@ -24,7 +24,7 @@ permalink: /about/
 
 Hi, I'm Gerard Boxó
 
-I'm currently studying Statistics at University of Barcelona. My main focus is on Mechanistic Interpretability. I created this blog to share my experiments, thoughts and walktrougs of MI papers, and much more.
+I'm currently studying Statistics at University of Barcelona. My main focus is on Mechanistic Interpretability. I created this blog to share my experiments, thoughts ,walktrougs of MI papers, and much more.
 
 In my free time, I enjoy spending time with my loved ones.
 
@@ -33,5 +33,5 @@ In my free time, I enjoy spending time with my loved ones.
 - [LinkedIn](www.linkedin.com/in/
 gerard-boxó-corominas-183598275
 )
-- [Twitter](https://twitter.com/gboxo)
+- [Twitter](https://twitter.com/uadeoif)
 - [GitHub](https://github.com/gboxo)
