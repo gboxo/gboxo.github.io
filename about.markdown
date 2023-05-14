@@ -6,6 +6,9 @@ permalink: /about/
 <link rel="stylesheet" href="custom.css">
 <style>
  .profile-picture {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 150px;
     height: auto;
     border-radius: 50%;
@@ -21,7 +24,8 @@ permalink: /about/
 
 Hi, I'm Gerard Boxó
 
-I'm currently studying Statistics at University of Barcelona. My main focus is on Mechanistic Interpretability. I created this blog to share my experiments, thoughts and walktrougs of [MI]
+I'm currently studying Statistics at University of Barcelona. My main focus is on Mechanistic Interpretability. I created this blog to share my experiments, thoughts and walktrougs of MI papers, and much more.
+
 In my free time, I enjoy spending time with my loved ones.
 
 ### Connect with me:
