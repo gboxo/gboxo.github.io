@@ -4,8 +4,18 @@ title: About
 permalink: /about/
 ---
 <link rel="stylesheet" href="custom.css">
+<style>
+ .profile-picture {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+  }
+</style>
 
-![Profile Picture](/assets/images/profile_picture.jpg){: .profile-picture}
+
+
+![Profile Picture](/assets/images/profile_picture.jpg){: .profile-picture {
+}
 
 
 
