@@ -6,7 +6,7 @@ permalink: /about/
 <link rel="stylesheet" href="custom.css">
 <style>
  .profile-picture {
-    width: 50px;
+    width: 150px;
     height: auto;
     border-radius: 50%;
   }
