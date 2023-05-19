@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: MI
+title: M.I
 email: gerard.boxo@estudiantat.upc.edu
 description: >- # this means to ignore newlines until "baseurl:"
   This blog is dedicated to discussing Mechanistic Interpretability 
