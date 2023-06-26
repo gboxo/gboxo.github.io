@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Introduction to mechanistic Interpretability"
+title: "My first post"
 date: 2023-05-19
 ---
 
