@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Integrated Gradients in GPT-2y"
+title: "Integrated Gradients in GPT-2"
 date: 2023-07-5
 ---
 # Integrated Gradients in GPT-2
