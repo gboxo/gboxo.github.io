@@ -1,4 +1,9 @@
-# Integrated Gradients on GPT-2
+---
+layout: post
+title: "Integrated Gradients in GPT-2y"
+date: 2023-07-5
+---
+# Integrated Gradients in GPT-2
 
 Integrated Gradients (IG) is a method initially presented in the paper "Axiomatic Attribution for Deep Neural Networks." This approach aims to shed light on interpretability to neural networks by assigning attribution scores to their input features, providing a degree of human interpretability to the decision-making process.
 
