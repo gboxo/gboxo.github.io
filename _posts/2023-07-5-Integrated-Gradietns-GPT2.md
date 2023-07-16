@@ -1,7 +1,7 @@
 ---
-layout: post
 title: "Integrated Gradients in GPT-2"
-date: 2023-07-5
+layout: post
+date: "2023-07-5"
 ---
 # Integrated Gradients in GPT-2
 
@@ -36,13 +36,10 @@ In the simplest scenario, consider a linear regression model with a single activ
 
 **Formula for the approximation of integrated gradients along the i-th dimension**
 
-$$
-IntegratedGrads_i^{approx}(x):=(x_i-x'_i)\sum^m_{k=1}\frac{\partial F (x'+\frac{k}{m}(x-x'))}{\partial x_i}\frac{1
-
-}{m}
-$$
+$$IntegratedGrads_i^{approx}(x):=(x_i-x'_i)\sum^m_{k=1}\frac{\partial F (x'+\frac{k}{m}(x-x'))}{\partial x_i}\frac{1}{m}$$
 
 Where:
+
 - $x$ is the input vector for which you want to explain the prediction.
 - $x'$ is the baseline input, usually chosen as a zero vector.
 - $F$ is the model's prediction function.
@@ -322,7 +319,7 @@ for j in range(max_num_tok):  # Generate 11 tokens
 
 
 
-### Limitation of the technique
+### Limitations of the technique
 
 **Baseline selection**: The choice of baseline, which serves as the reference point for calculating gradients, can impact the attribution results. Different baselines may lead to different attributions, and there is no universally optimal choice for all scenarios. In particular when investigating a particular behavior of the model ther's a fine line between an optimal selection of the baseline and folling out of distribution.
 
