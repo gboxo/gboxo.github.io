@@ -428,6 +428,7 @@ to the traditional understanding from linear models.</p>
 the i-th dimension</strong></p>
 <p><span class="math display">\[IntegratedGrads_i^{approx}(x):=(x_i-x&#39;_i)\sum^m_{k=1}\frac{\partial
 F (x&#39;+\frac{k}{m}(x-x&#39;))}{\partial x_i}\frac{1}{m}\]</span></p>
+<<<<<<< HEAD
 <p>Where:</p>
 <ul>
 <li><span class="math inline">\(x\)</span> is the input vector for which
@@ -445,6 +446,18 @@ to approximate the integral, which essentially divides the line path
 from the baseline <span class="math inline">\(x&#39;\)</span> to the
 input <span class="math inline">\(x\)</span> into <span class="math inline">\(m\)</span> segments.</li>
 </ul>
+=======
+<p>Where: - <span class="math inline">\(x\)</span> is the input vector
+for which you want to explain the prediction. - <span class="math inline">\(x&#39;\)</span> is the baseline input, usually
+chosen as a zero vector. - <span class="math inline">\(F\)</span> is the
+model’s prediction function. - <span class="math inline">\(x_i\)</span>
+is the ‘i’-th feature of the input vector <span class="math inline">\(x\)</span>. - <span class="math inline">\(x&#39;_i\)</span> is the ‘i’-th feature of the
+baseline input vector <span class="math inline">\(x&#39;\)</span>. -
+<span class="math inline">\(m\)</span> is the number of steps used to
+approximate the integral, which essentially divides the line path from
+the baseline <span class="math inline">\(x&#39;\)</span> to the input
+<span class="math inline">\(x\)</span> into <span class="math inline">\(m\)</span> segments.</p>
+>>>>>>> b0a37dd8984fba49311da171caef562e69a6b80b
 <p>Now, let’s understand the different components of the formula:</p>
 <p><span class="math inline">\((x_i-x&#39;_i)\)</span>: This part
 calculates the difference for the ‘i’-th feature between the input and
