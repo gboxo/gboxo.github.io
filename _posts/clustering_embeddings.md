@@ -1,30 +1,28 @@
 ---
 layout: post
-title: "Introduction to mechanistic Interpretability"
+title: "Word Embeddings: A Comprehensive Guide Part 1"
 date: 2023-09-22
 ---
 
 
 
-# Word Embeddings: A Comprehensive Guide Part 1
 
 ## Table of Contents
 
-- [Word Embeddings: A Comprehensive Guide Part 1](#word-embeddings-a-comprehensive-guide-part-1)
-  - [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
-    - [Definition](#definition)
-    - [Usage](#usage)
-  - [What are word embeddings?](#what-are-word-embeddings)
-    - [Different word embeddings](#different-word-embeddings)
-    - [Semantic similarity](#semantic-similarity)
-  - [Clustering](#clustering)
-    - [Clustering techniques](#clustering-techniques)
-    - [Brief explanation of the technique family and it's interpretation when clustering word embeddings.](#brief-explanation-of-the-technique-family-and-its-interpretation-when-clustering-word-embeddings)
-    - [Metrics for clusterbility](#metrics-for-clusterbility)
-    - [Examples of interpetable clusters](#examples-of-interpetable-clusters)
-  - [Distribution of word embeddings](#distribution-of-word-embeddings)
-    - [How much do similar tokens share representations](#how-much-do-similar-tokens-share-representations)
+- [Table of Contents](#table-of-contents)
+- [Introduction](#introduction)
+  - [Definition](#definition)
+  - [Usage](#usage)
+- [What are word embeddings?](#what-are-word-embeddings)
+  - [Different word embeddings](#different-word-embeddings)
+  - [Semantic similarity](#semantic-similarity)
+- [Clustering](#clustering)
+  - [Clustering techniques](#clustering-techniques)
+  - [Brief explanation of the technique family and it's interpretation when clustering word embeddings.](#brief-explanation-of-the-technique-family-and-its-interpretation-when-clustering-word-embeddings)
+  - [Metrics for clusterbility](#metrics-for-clusterbility)
+  - [Examples of interpetable clusters](#examples-of-interpetable-clusters)
+- [Distribution of word embeddings](#distribution-of-word-embeddings)
+  - [How much do similar tokens share representations](#how-much-do-similar-tokens-share-representations)
 
 
 
@@ -146,11 +144,11 @@ Graph based methods should be well suited for detecting intrincate relationships
 
 Agglomerative
 
-![Alt text](image-13.png)
+![](image-13.png)
 
 KMEANS
 
-![Alt text](image-12.png)
+![](image-12.png)
 
 
 
@@ -173,28 +171,28 @@ KMEANS
 **Agglomerative clustering  100 clusters**
 
 
-![Alt text](image-2.png)
+![](image-2.png)
 
 
-![Alt text](image-3.png)
+![](image-3.png)
 
 
 **k-means 100 clusters**  
 
 ![-ing termination](image-4.png)
 
-![Alt text](image-5.png)
+![](image-5.png)
 
 **Louvain threshold 0.5 resolution 0.2**
 
 
-![Alt text](image-9.png)
+![](image-9.png)
 
 
 
-![Alt text](image-10.png)
+![](image-10.png)
 
-![Alt text](image-11.png)
+![](image-11.png)
 
 `The effectivness of the clustering is largley influenced by the threshold and the resolution`
 
@@ -222,10 +220,10 @@ Specifically the anisotropic inducing behavior is concentred in a few components
 - For each row group the tokens by minimum edit distance and average the cosine similarity by group to the reference token
 - Histogram of the means by minimum eddit distance
 
-![Alt text](image-7.png)
+![](image-7.png)
 
 
-![Alt text](image-8.png)
+![](image-8.png)
 
 
 If we look at the first 3 minimum edit distance we can observe that some tokens have a very high cosine similarity.
