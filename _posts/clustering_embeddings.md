@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Introduction to mechanistic Interpretability"
+date: 2023-09-22
+---
+
+
+
 # Word Embeddings: A Comprehensive Guide Part 1
 
 ## Table of Contents
