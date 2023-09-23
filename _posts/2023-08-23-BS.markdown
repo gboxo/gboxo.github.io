@@ -87,7 +87,7 @@ The dataset consists of quartets that follow certain rules:
 
 
 
-![PCA embeddings](pca_emb_arrows.png)
+![PCA embeddings](/assets/images/BS/pca_emb_arrows.png)
 
 
 
@@ -102,7 +102,7 @@ Example of prompt with conjunction:
 The day is bright, but the night is dark
 ```
 
-![Loggits with conjunctions](loggits_with_conjunction.png)
+![Loggits with conjunctions](/assets/images/BS/loggits_with_conjunction.png)
 
 
 #### Without Conjunctions
@@ -113,7 +113,7 @@ Example of prompt without conjunction:
 The day is bright; the night is dark
 ```
 
-![Loggits without conjunctions](loggits_without_conjunction.png)
+![Loggits without conjunctions](/assets/images/BS/loggits_without_conjunction.png)
 
 
 It is clear from the graphs that the task is best accomplished when conjunctions are used in the prompt. This suggests that conjunctions like "but" might be trigger words for this kind of extrapolation behavior.
@@ -126,28 +126,27 @@ Which components of the model contribute more to the final logits of the correct
 
 The performance increases noticeably around the 8th layer.
 
-![Loggit difference accumulated trough the residual stream](Loggit_difference_accumulated_RS.png)
+![Loggit difference accumulated trough the residual stream](/assets/images/BS/Loggit_difference_accumulated_RS.png)
 
 
 #### Layer Attribution
 
-![Layer attribution](Layer_Attribution.png)
+![Layer attribution](/assets/images/BS/Layer_Attribution.png)
 
 
 #### Head Attribution
 
 The most important head appears to be head 9 in layer 7.
-![Head attribution](Loggit_difference_each_head.png)
+![Head attribution](/assets/images/BS/Loggit_difference_each_head.png)
 
 
 
 Using a technique outlined in the blog post ![The singular value decomposition of transformer weights are highly interpretable](https://www.lesswrong.com/posts/mkbGjzxD8d8XqKHzA/the-singular-value-decompositions-of-transformer-weight#Directly_editing_SVD_representations) we can look up the SVD of the OV matrix in the attention head 79 in layer 7 to check which are the top tokens affected by the head.
 
-![Top tokens](OVH9L7.png)
+![Top tokens](/assets/images/BS/OVH9L7.png)
 
 
 We can observer a notable presence of conjunctions.
 
-### Neuron Attribution
 
 

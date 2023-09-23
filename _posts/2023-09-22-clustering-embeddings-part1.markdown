@@ -144,11 +144,11 @@ Graph based methods should be well suited for detecting intrincate relationships
 
 Agglomerative
 
-![](image-13.png)
+![](/assets/images/clustering/image-13.png)
 
 KMEANS
 
-![](image-12.png)
+![](/assets/images/clustering/image-12.png)
 
 
 
@@ -171,28 +171,28 @@ KMEANS
 **Agglomerative clustering  100 clusters**
 
 
-![](image-2.png)
+![](/assets/images/clustering/image-2.png)
 
 
-![](image-3.png)
+![](/assets/images/clustering/image-3.png)
 
 
 **k-means 100 clusters**  
 
 ![-ing termination](image-4.png)
 
-![](image-5.png)
+![](/assets/images/clustering/image-5.png)
 
 **Louvain threshold 0.5 resolution 0.2**
 
 
-![](image-9.png)
+![](/assets/images/clustering/image-9.png)
 
 
 
-![](image-10.png)
+![](/assets/images/clustering/image-10.png)
 
-![](image-11.png)
+![](/assets/images/clustering/image-11.png)
 
 `The effectivness of the clustering is largley influenced by the threshold and the resolution`
 
@@ -220,10 +220,10 @@ Specifically the anisotropic inducing behavior is concentred in a few components
 - For each row group the tokens by minimum edit distance and average the cosine similarity by group to the reference token
 - Histogram of the means by minimum eddit distance
 
-![](image-7.png)
+![](/assets/images/clustering/image-7.png)
 
 
-![](image-8.png)
+![](/assets/images/clustering/image-8.png)
 
 
 If we look at the first 3 minimum edit distance we can observe that some tokens have a very high cosine similarity.
