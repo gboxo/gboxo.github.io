@@ -158,9 +158,9 @@ Understanding the structure of a prompt can enhance the efficiency of a model's 
 
 ### Conclusion
 
-1) The embedding space can be clustered into semantically consistent clusters.
-2) Understanding the overall structure of a prompt can be useful for various tasks.
-3) Unsupervised NER always represents a trade-off between specificity and the coverage of the vocabulary space.
-4) Algorithmic improvements are necessary to make the algorithm more feasible.
-5) This method could be combined with Swap Graphs or ACDC to generalize interpretability work.
+1) The embedding space can be clustered into semantically consistent clusters. 
+2) Understanding the overall structure of a prompt can be useful for various tasks. 
+3) Unsupervised NER always represents a trade-off between specificity and the coverage of the vocabulary space. 
+4) Algorithmic improvements are necessary to make the algorithm more feasible. 
+5) This method could be combined with Swap Graphs or ACDC to generalize interpretability work. 
 
