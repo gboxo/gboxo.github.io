@@ -12,6 +12,7 @@ This first post will be organized in two distinct parts, the first one being the
 
 ### Background
 
+
 In the last decade, enormous advancements have been made in the field of Machine Learning, enabling unheard-of performance in many tasks ranging from computer vision to text generation.
 
 These advancements have sparked interest in how these models perform so well for many reasons such as scientific interest, safety concerns, or capabilities advancement.
@@ -82,7 +83,7 @@ To do so, we use Sparse Autoencoders. These are Autoencoders that try to reconst
 
 Given the fact that language is expected to have many more features than there are neurons in an MLP, we use overcomplete SAE.
 <p align="center">
-  <img src="image.png" alt="Auto Encoder">
+  <img src="/assets/images/disentanglement/images/image.png" alt="Auto Encoder">
 </p>
 
 
@@ -129,7 +130,7 @@ The first step, as outlined above, is to generate a set of ground truth feature 
 We sample from a Gaussian distribution with mean 0 and variance 1.
 
 <p align="center">
-  <img src="image-1.png" alt="Gaussian Sampling">
+  <img src="/assets/images/disentanglement/images/image-1.png" alt="Gaussian Sampling">
 </p>
 
 
@@ -137,7 +138,7 @@ Later we normalize the vectors, so they have norm 1 and the lay in the unit sphe
 
 
 <p align="center">
-  <img src="image-2.png" alt="Normalization">
+  <img src="/assets/images/disentanglement/images/image-2.png" alt="Normalization">
 </p>
 Once the ground truth features are constructed, we proceed with the sampling of (Synthetic) Neural Activations that are just a sparse composition of ground truth features, with some perks like a correlation structure to make them behave in a more real way.
 
@@ -146,7 +147,7 @@ As an example, we sample 12 SNAs (Synthetic Neural Activations), and we highligh
 
 
 <p align="center">
-  <img src="image-3.png" alt="Samples">
+  <img src="/assets/images/disentanglement/images/image-3.png" alt="Samples">
 </p>
 
 In the plot above, the blue arrows are the sampled activations, the green arrows are the ground truth features that are active, and the red arrows are the inactive ones.
@@ -158,7 +159,7 @@ If we plot the frequency of feature activations, we can see that some features a
 These effects are more prevalent when dealing with higher dimensionalities and a greater amount of features.
 
 <p align="center">
-  <img src="image-4.png" alt="Frequency of samples" width="300" height="300">
+  <img src="/assets/images/disentanglement/images/image-4.png" alt="Frequency of samples" width="300" height="300">
 </p>
 
 
@@ -196,13 +197,13 @@ From left/right top/down, we can see the plots for:
 <table>
 
    <tr>
-    <td><img src="images/recon_loss_matrix.png" width="100%"/></td>
-   <td><img src="images/mmcs_matrix.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/recon_loss_matrix.png" width="100%"/></td>
+   <td><img src="/assets/images/disentanglement/images/mmcs_matrix.png" width="100%"/></td>
   </tr>
 
   <tr>
-    <td><img src="images/av_mmcs_with_larger_dicts.png" width="100%"/></td>
-    <td><img src="images/dead_neurons_matrix.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/av_mmcs_with_larger_dicts.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/dead_neurons_matrix.png" width="100%"/></td>
   </tr>
 
 
@@ -215,24 +216,24 @@ We can observe that the majority of the way up to the Ground Truth Features is r
 <table>
 
   <tr>
-    <td><img src="GIFs/GIF_0.gif" width="100%"/></td>
-    <td><img src="GIFs/GIF_1.gif" width="100%"/></td>
-    <td><img src="GIFs/GIF_2.gif" width="100%"/></td>
-   <td><img src="GIFs/GIF_3.gif" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/GIFs/GIF_0.gif" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/GIFs/GIF_1.gif" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/GIFs/GIF_2.gif" width="100%"/></td>
+   <td><img src="/assets/images/disentanglement/GIFs/GIF_3.gif" width="100%"/></td>
   </tr>
 
   <tr>
-    <td><img src="GIFs/GIF_4.gif" width="100%"/></td>
-    <td><img src="GIFs/GIF_5.gif" width="100%"/></td>
-    <td><img src="GIFs/GIF_6.gif" width="100%"/></td>
-   <td><img src="GIFs/GIF_7.gif" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/GIFs/GIF_4.gif" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/GIFs/GIF_5.gif" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/GIFs/GIF_6.gif" width="100%"/></td>
+   <td><img src="/assets/images/disentanglement/GIFs/GIF_7.gif" width="100%"/></td>
   </tr>
 
   <tr>
-    <td><img src="GIFs/GIF_8.gif" width="100%"/></td>
-    <td><img src="GIFs/GIF_9.gif" width="100%"/></td>
-    <td><img src="GIFs/GIF_10.gif" width="100%"/></td>
-   <td><img src="GIFs/GIF_11.gif" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/GIFs/GIF_8.gif" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/GIFs/GIF_9.gif" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/GIFs/GIF_10.gif" width="100%"/></td>
+   <td><img src="/assets/images/disentanglement/GIFs/GIF_11.gif" width="100%"/></td>
   </tr>
 
 </table>
