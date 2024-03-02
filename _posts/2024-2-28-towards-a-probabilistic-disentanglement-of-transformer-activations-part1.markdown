@@ -134,7 +134,7 @@ We sample from a Gaussian distribution with mean 0 and variance 1.
 </p>
 
 
-Later we normalize the vectors, so they have norm 1 and the lay in the unit sphere.
+Later we normalize the vectors, so they have norm 1 and the lie in the unit sphere.
 
 
 <p align="center">
