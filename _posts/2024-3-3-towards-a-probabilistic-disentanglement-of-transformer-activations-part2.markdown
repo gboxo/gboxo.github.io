@@ -46,9 +46,9 @@ With this, we mainly wanted to explore the variation of the **feature probabilit
 
 <table>
    <tr>
-    <td><img src="/assets/images/disentanglement/imagesuncorrelated/T-SNE plot for the Decay 0.95 and Dataset size 2048.png" width="100%"/></td>
-   <td><img src="/assets/images/disentanglement/imagesuncorrelated/T-SNE plot for the Decay 0.99 and Dataset size 2048.png" width="100%"/></td>
-   <td><img src="/assets/images/disentanglement/imagesuncorrelated/T-SNE plot for the Decay 1 and Dataset size 2048.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/uncorrelated/T-SNE plot for the Decay 0.95 and Dataset size 2048.png" width="100%"/></td>
+   <td><img src="/assets/images/disentanglement/images/uncorrelated/T-SNE plot for the Decay 0.99 and Dataset size 2048.png" width="100%"/></td>
+   <td><img src="/assets/images/disentanglement/images/uncorrelated/T-SNE plot for the Decay 1 and Dataset size 2048.png" width="100%"/></td>
   </tr>
   </tr>
 <table>
@@ -63,9 +63,9 @@ This is because, as the features have equal probabilities, there is no way of em
 
 <table>
    <tr>
-    <td><img src="/assets/images/disentanglement/imagescorrelated/T-SNE plot for the Decay 0.95 and Dataset size 2048.png" width="100%"/></td>
-   <td><img src="/assets/images/disentanglement/imagescorrelated/T-SNE plot for the Decay 0.99 and Dataset size 2048.png" width="100%"/></td>
-   <td><img src="/assets/images/disentanglement/imagescorrelated/T-SNE plot for the Decay 1 and Dataset size 2048.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/correlated/T-SNE plot for the Decay 0.95 and Dataset size 2048.png" width="100%"/></td>
+   <td><img src="/assets/images/disentanglement/images/correlated/T-SNE plot for the Decay 0.99 and Dataset size 2048.png" width="100%"/></td>
+   <td><img src="/assets/images/disentanglement/images/correlated/T-SNE plot for the Decay 1 and Dataset size 2048.png" width="100%"/></td>
   </tr>
   </tr>
 <table>
@@ -106,13 +106,13 @@ To make sure that the performance was stable relative to the dataset size we ran
 
 <table>
    <tr>
-    <td><img src="/assets/images/disentanglement/imagesuncorrelated/MMCS for the baseline method: ica and decay: 0.99.png" width="100%"/></td>
-    <td><img src="/assets/images/disentanglement/imagesuncorrelated/MMCS for the baseline method: pca and decay: 0.99.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/uncorrelated/MMCS for the baseline method: ica and decay: 0.99.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/uncorrelated/MMCS for the baseline method: pca and decay: 0.99.png" width="100%"/></td>
   </tr>
 
    <tr>
-    <td><img src="/assets/images/disentanglement/imagesuncorrelated/MMCS for the baseline method: kmeans and decay: 0.99.png" width="100%"/></td>
-    <td><img src="/assets/images/disentanglement/imagesuncorrelated/MMCS for the baseline method: kmedoids and decay: 0.99.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/uncorrelated/MMCS for the baseline method: kmeans and decay: 0.99.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/uncorrelated/MMCS for the baseline method: kmedoids and decay: 0.99.png" width="100%"/></td>
   </tr>
   </tr>
 <table>
@@ -128,13 +128,13 @@ The last two methods, PCA and ICA, were found to not be suitable for the task du
 
 <table>
    <tr>
-    <td><img src="/assets/images/disentanglement/imagescorrelated/MMCS for the baseline method: ica and decay: 0.99.png" width="100%"/></td>
-    <td><img src="/assets/images/disentanglement/imagescorrelated/MMCS for the baseline method: pca and decay: 0.99.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/correlated/MMCS for the baseline method: ica and decay: 0.99.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/correlated/MMCS for the baseline method: pca and decay: 0.99.png" width="100%"/></td>
   </tr>
 
    <tr>
-    <td><img src="/assets/images/disentanglement/imagescorrelated/MMCS for the baseline method: kmeans and decay: 0.99.png" width="100%"/></td>
-    <td><img src="/assets/images/disentanglement/imagescorrelated/MMCS for the baseline method: kmedoids and decay: 0.99.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/correlated/MMCS for the baseline method: kmeans and decay: 0.99.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/correlated/MMCS for the baseline method: kmedoids and decay: 0.99.png" width="100%"/></td>
   </tr>
   </tr>
 <table>
@@ -149,9 +149,9 @@ When experimenting with the dataset with correlated features, we found that the 
 
 <table>
    <tr>
-    <td><img src="/assets/images/disentanglement/imagesuncorrelated/MMCS vs feature probability for method: kmeans decay: 0.95 and dict size 2048.png" width="100%"/></td>
-    <td><img src="/assets/images/disentanglement/imagesuncorrelated/MMCS vs feature probability for method: kmeans decay: 0.99 and dict size 2048.png" width="100%"/></td>
-    <td><img src="/assets/images/disentanglement/imagesuncorrelated/MMCS vs feature probability for method: kmeans decay: 1 and dict size 2048.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/uncorrelated/MMCS vs feature probability for method: kmeans decay: 0.95 and dict size 2048.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/uncorrelated/MMCS vs feature probability for method: kmeans decay: 0.99 and dict size 2048.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/uncorrelated/MMCS vs feature probability for method: kmeans decay: 1 and dict size 2048.png" width="100%"/></td>
   </tr>
 
   </tr>
@@ -163,9 +163,9 @@ When experimenting with the dataset with correlated features, we found that the 
 
 <table>
    <tr>
-    <td><img src="/assets/images/disentanglement/imagescorrelated/MMCS vs feature probability for method: kmeans decay: 0.95 and dict size 2048.png" width="100%"/></td>
-    <td><img src="/assets/images/disentanglement/imagescorrelated/MMCS vs feature probability for method: kmeans decay: 0.99 and dict size 2048.png" width="100%"/></td>
-    <td><img src="/assets/images/disentanglement/imagescorrelated/MMCS vs feature probability for method: kmeans decay: 1 and dict size 2048.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/correlated/MMCS vs feature probability for method: kmeans decay: 0.95 and dict size 2048.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/correlated/MMCS vs feature probability for method: kmeans decay: 0.99 and dict size 2048.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/correlated/MMCS vs feature probability for method: kmeans decay: 1 and dict size 2048.png" width="100%"/></td>
   </tr>
 
   </tr>
@@ -221,13 +221,13 @@ We plot some of the metrics used in the original paper for both the correlated a
 <table>
 
    <tr>
-    <td><img src="/assets/images/disentanglement/imagesuncorrelated/recon_loss_matrix.png" width="100%"/></td>
-   <td><img src="/assets/images/disentanglement/imagesuncorrelated/mmcs_matrix.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/uncorrelated/recon_loss_matrix.png" width="100%"/></td>
+   <td><img src="/assets/images/disentanglement/images/uncorrelated/mmcs_matrix.png" width="100%"/></td>
   </tr>
 
   <tr>
-    <td><img src="/assets/images/disentanglement/imagesuncorrelated/av_mmcs_with_larger_dicts.png" width="100%"/></td>
-    <td><img src="/assets/images/disentanglement/imagesuncorrelated/dead_neurons_matrix.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/uncorrelated/av_mmcs_with_larger_dicts.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/uncorrelated/dead_neurons_matrix.png" width="100%"/></td>
   </tr>
 
 </table>
@@ -241,13 +241,13 @@ We plot some of the metrics used in the original paper for both the correlated a
 <table>
 
    <tr>
-    <td><img src="/assets/images/disentanglement/imagescorrelated/recon_loss_matrix.png" width="100%"/></td>
-   <td><img src="/assets/images/disentanglement/imagescorrelated/mmcs_matrix.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/correlated/recon_loss_matrix.png" width="100%"/></td>
+   <td><img src="/assets/images/disentanglement/images/correlated/mmcs_matrix.png" width="100%"/></td>
   </tr>
 
   <tr>
-    <td><img src="/assets/images/disentanglement/imagescorrelated/av_mmcs_with_larger_dicts.png" width="100%"/></td>
-    <td><img src="/assets/images/disentanglement/imagescorrelated/dead_neurons_matrix.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/correlated/av_mmcs_with_larger_dicts.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/correlated/dead_neurons_matrix.png" width="100%"/></td>
   </tr>
 
 </table>
@@ -261,7 +261,7 @@ These plots show how important the tuning of both hyperparameters is, especially
 **Dead Nuerons**
 
 <p align="center">
-  <img src="/assets/images/disentanglement/imagescorrelated/dead_neurons.png"  width="200" height="200">
+  <img src="/assets/images/disentanglement/images/correlated/dead_neurons.png"  width="200" height="200">
 </p>
 
 We can observe the phenomenon in whic appropietly sized dictionaries plato the number of dead neurons vs the oversized dictionaries in which the number of dead neurons grow constantly.
@@ -281,8 +281,8 @@ One of the most interesting things we observed during training was the phenomeno
 
 <table>
   <tr>
-    <td><img src="/assets/images/disentanglement/imagescorrelated/avg_unlearned.png" width="100%"/></td>
-    <td><img src="/assets/images/disentanglement/imagescorrelated/unlearned_no_change.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/correlated/avg_unlearned.png" width="100%"/></td>
+    <td><img src="/assets/images/disentanglement/images/correlated/unlearned_no_change.png" width="100%"/></td>
   </tr>
 
 </table>
@@ -292,7 +292,7 @@ One of the most interesting things we observed during training was the phenomeno
 Finally we can see how the number of features that are learned and don't change the entry of the dictionary increases with the epochs, specially for apropietly sized dictionaries with the right $L_1$ penalty.
 
 <p align="center">
-  <img src="/assets/images/disentanglement/imagescorrelated/still_learned.png"  width="250" height="150">
+  <img src="/assets/images/disentanglement/images/correlated/still_learned.png"  width="250" height="150">
 </p>
 
 
