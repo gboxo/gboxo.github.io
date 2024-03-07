@@ -18,6 +18,7 @@ Taking as a reference the **Conjecture** initial article, we will use 2 differen
 
 1) Generate the ground truth features with decay in their probability occurrences, this will replicate a property that real activations likely have. This means some features will probably be way more likely than others.
    - The feature `is_french` probably is way more likely than the feature `@_is_python_decorator`.
+  
 2) Generate the ground truth features with decay and correlation. This tries to extend the behavior of the first data generation method to include another property that real activations probably have. This means that some features co-occur with a higher probability than others.
    - For example, the feature `is_french` probably co-occurs with the feature `word_is_gendered`, due to the fact that French have gender-variant nouns.
 
@@ -50,8 +51,7 @@ With this, we mainly wanted to explore the variation of the **feature probabilit
    <td><img src="/assets/images/disentanglement/images/uncorrelated/T-SNE plot for the Decay 0.99 and Dataset size 2048.png" width="100%"/></td>
    <td><img src="/assets/images/disentanglement/images/uncorrelated/T-SNE plot for the Decay 1 and Dataset size 2048.png" width="100%"/></td>
   </tr>
-  </tr>
-<table>
+</table>
 
 We can see how, as we increase the decay, the data points tend to evenly distribute in the plane.
 
@@ -67,8 +67,7 @@ This is because, as the features have equal probabilities, there is no way of em
    <td><img src="/assets/images/disentanglement/images/correlated/T-SNE plot for the Decay 0.99 and Dataset size 2048.png" width="100%"/></td>
    <td><img src="/assets/images/disentanglement/images/correlated/T-SNE plot for the Decay 1 and Dataset size 2048.png" width="100%"/></td>
   </tr>
-  </tr>
-<table>
+</table>
 
 In the case of correlated ground truth components, we can also observe how, as we increase the feature probability decay, the points more evenly distribute in the plane.
 
@@ -114,8 +113,7 @@ To make sure that the performance was stable relative to the dataset size we ran
     <td><img src="/assets/images/disentanglement/images/uncorrelated/MMCS for the baseline method: kmeans and decay: 0.99.png" width="100%"/></td>
     <td><img src="/assets/images/disentanglement/images/uncorrelated/MMCS for the baseline method: kmedoids and decay: 0.99.png" width="100%"/></td>
   </tr>
-  </tr>
-<table>
+</table>
 
 
 The baseline method that has the best performance on uncorrelated neural-like activations is k-means, with an increase in MMCS with data size, the MMCS converged to around 0.55 when tested up to 409,600 data points.
@@ -136,8 +134,7 @@ The last two methods, PCA and ICA, were found to not be suitable for the task du
     <td><img src="/assets/images/disentanglement/images/correlated/MMCS for the baseline method: kmeans and decay: 0.99.png" width="100%"/></td>
     <td><img src="/assets/images/disentanglement/images/correlated/MMCS for the baseline method: kmedoids and decay: 0.99.png" width="100%"/></td>
   </tr>
-  </tr>
-<table>
+</table>
 
 
 When experimenting with the dataset with correlated features, we found that the MMCS where more stable to changes in the dataset size, with KMeans and KMedoids being the best performing baseline methods.
@@ -154,8 +151,7 @@ When experimenting with the dataset with correlated features, we found that the 
     <td><img src="/assets/images/disentanglement/images/uncorrelated/MMCS vs feature probability for method: kmeans decay: 1 and dict size 2048.png" width="100%"/></td>
   </tr>
 
-  </tr>
-<table>
+</table>
 
 
 **Correlated features**
@@ -168,8 +164,7 @@ When experimenting with the dataset with correlated features, we found that the 
     <td><img src="/assets/images/disentanglement/images/correlated/MMCS vs feature probability for method: kmeans decay: 1 and dict size 2048.png" width="100%"/></td>
   </tr>
 
-  </tr>
-<table>
+</table>
 
 
 
@@ -297,3 +292,4 @@ Finally we can see how the number of features that are learned and don't change 
 
 
 In the following post, we will explore the possibility of disentangling the features in a probabilistic fashion with the use of Variational Autoencoders, with sparse priors.
+
