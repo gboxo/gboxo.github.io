@@ -8,6 +8,10 @@ date: 2024-09-29
 ## Investigating Local circuit in the feature basis
 
 
+[Streamlit App](https://localcircuitsapp-n2udcvjnuwhfzrysnksqog.streamlit.app/)
+
+
+
 This post is part of the Final Project for the AI Safety Fundamentals Course, which I recommend to anyone who's interested in AI Safety.
 
 
@@ -35,12 +39,13 @@ At the end the project, was mostly unchanged but with slight modifications make 
 
 
 # Table of Contents
-1. [Motivation](#motivation)
-2. [Introduction](#introduction)
-3. [Relevant Definitions](#definitions)
-4. [Methods](#methods)
-5. [Results](#results)
-6. [Frustration Dump](#frustrations)
+- [Table of Contents](#table-of-contents)
+    - [Motivation](#motivation)
+    - [Introduction](#introduction)
+    - [Relevant Definitions](#relevant-definitions)
+    - [Methods](#methods)
+    - [Results](#results)
+    - [Frustration Dump](#frustration-dump)
 
 
 
@@ -160,10 +165,6 @@ In the context of Mechanistic Interpretability work that uses SAEs or it's varia
 
 In this project we use SAEs for the attention output and TCs for the MLP output, this defines a set of possible features that could be active for a given input.
 
-
-$$
-\text{Set of Features} = \bigcup_{l=0}^{layers}[F_{MLP}^{l}\cup F_{Att}^{l}]
-$$
 
 
 
