@@ -285,11 +285,13 @@ During the project duration I've stumbled with countless problems, ranging from 
 
 
 1) Problems with general tooling, Mechanistic Interpretability as a field is in the expansion phase, this results in high Opportunity costs for researcher that want to refine tooling.
+
 2) Problem with the SAE framework, I've spent more time that I would like to admit browsing trough neuronpedia, and it's apparent that neither the explanations nor the feature's itself are the most informative (specially for the smaller SAEs), being that most of the feature's behavior is dominated by the token position.
 
 *It's important to separate what you expect to find and the evaluation of the actual findings, but the quality gap between 32k and 1M SAEs is apparent in hindsight.*
 
 3) Memory constraints, with just some back of the envelope calculations it's soon apparent that the naive "use SAEs" in all layers is not feasible, for >2B models.
+
 4) The preponderance of the preprint, this is the case for the general field of ML, but this results in a situation in which the reader must "guess" what are the authors meant. I understand that the incentives right now are to not produce easily replicable research because the upfront cost for the researcher.
 
 
