@@ -274,21 +274,41 @@ This tensor can be further reduced by aggregating across token positions, this r
 
 We can compare the computational traces across different target features, or across different prompts that make a target feature fire.
 
+Some interesting facts about the computational traces are:
+
+
+**Disclaimer**
+This plots are somewhat cherry picked, the plots for all the features can be seen in the [Streamlit App](https://localcircuitsapp-n2udcvjnuwhfzrysnksqog.streamlit.app/)
+
+There's an apparent linear relation between the average pairwise trace similarity  and the activation of the target node.
+
 
 <p align="center">
   <img src="/assets/images/Final_Project/Activation vs Trace Similarity.png" alt="Activation vs Trace Similarity">
 </p>
 
 
-<p align="center">
+We can see what are the most important components by analyzing what components are more similar for the dataset traces.
+
+For a given target feature, some of the examples are moere similar between them at various component locations<p align="center">
+
+
+This heatmap is for the attention features in Layer 1.
+
   <img src="/assets/images/Final_Project/HeatMap.png" alt="Heat Map of Layer 1 Feature traces">
 </p>
 
-
+We can see how all the examples for a given target feature converge trough the many components.
 
 <p align="center">
   <img src="/assets/images/Final_Project/Similarity by Component.png" alt="Similarity by component">
 </p>
+
+
+
+
+
+
 ### Frustration Dump
 
 **I've rushed to write this section,for the reader take into account that most of my complains are probably just skill-issues, and that is not a critique to other peoples work, just my POV.**
