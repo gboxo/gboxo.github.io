@@ -259,6 +259,9 @@ This only works because we've made the circuit full linear with the introduction
 
 **Attribution proportion vs Threshold**
 
+<p align="center">
+  <img src="/assets/images/Final_Project/attribution_fractions_plot.png" alt="Attribution Fraction">
+</p>
 
 
 Due to the difficulty of evaluating the circuits, and the lack of gold standards we focus more in measuring key metrics between circuits.
