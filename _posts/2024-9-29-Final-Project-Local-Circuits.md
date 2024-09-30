@@ -266,7 +266,7 @@ Due to the difficulty of evaluating the circuits, and the lack of gold standards
 After performing Hierarchical attribution, we can concatenate the attribution scores between components, this results in a extremly high dimensional tensor that represents the most important faeture to explain the fireing of a target node.
 
 
-This tensor can be further reduced by aggregating across token positions, this results in a tensor with shape (1xall_feats) that we call **computational trace**.
+This tensor can be further reduced by aggregating across token positions, this results in a tensor with shape (1 x all_feats) that we call **computational trace**.
 
 
 We can compare the computational traces across different target features, or across different prompts that make a target feature fire.
@@ -279,9 +279,19 @@ We can compare the computational traces across different target features, or acr
 
 ### Frustration Dump
 
-**I've rushed to write this section,for the reader take into account that most of my complains are just skill-issues.**
+**I've rushed to write this section,for the reader take into account that most of my complains are probably just skill-issues, and that is not a critique to other peoples work, just my POV.**
+
+During the project duration I've stumbled with countless problems, ranging from software bugs to lack of implementation details usually I wouldn't spend time in enumerating the problems that I've run into, because negativity is viral but some of the difficulties I think are paradigmatic of MI research and it's good to keep them in mind.
 
 
+1) Problems with general tooling, Mechanistic Interpretability as a field is in the expansion phase, this results in high Opportunity costs for researcher that want to refine tooling.
+2) Problem with the SAE framework, I've spent more time that I would like to admit browsing trough neuronpedia, and it's apparent that neither the explanations nor the feature's itself are the most informative (specially for the smaller SAEs), being that most of the feature's behavior is dominated by the token position.
+3) Memory constraints, with just some back of the envelope calculations it's soon apparent that the naive "use SAEs" in all layers is not feasible, for >2B models.
+4) The preponderance of the preprint, this is the case for the general field of ML, but this results in a situation in which the reader must "guess" what are the authors meant. I understand that the incentives right now are to not produce easily replicable research because the upfront cost for the researcher.
+
+
+
+**Thanks for reading.**
 
 
 ### Links to the most important resources
