@@ -243,6 +243,26 @@ Once hierarchical attribution has been performed we can use the OV and QK circui
 
 ### Results
 
+At the time of writing there are no gold standard ways of evaluating circuits.
+The main 2 metrics that we are concerned for circuits are **Completness** and **Faithfulness**.
+
+To measure this metrics we require node-wise ablation, which is costly.
+
+One proposed metric to measure the faithfulness of a Linear circuit in "Automatically Identifying Local and Global Circuits with Linear Computation Graphs" is to take the fraction between the target activation and the sum of the leaf node's attribution.
+
+
+
+This is useful since works out of the box, and there's no need to worry about taking the model OOD, which sometimes happens when performing ablations.
+
+This only works because we've made the circuit full linear with the introduction of Attnetion Output SAEs, MLP Transcoders and freezing attention patterns.
+
+
+
+
+
+
+
+
 
 
 ### Frustration Dump
