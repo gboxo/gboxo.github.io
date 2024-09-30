@@ -275,11 +275,20 @@ This tensor can be further reduced by aggregating across token positions, this r
 We can compare the computational traces across different target features, or across different prompts that make a target feature fire.
 
 
+<p align="center">
+  <img src="/assets/images/Final_Project/Activation vs Trace Similarity.png" alt="Activation vs Trace Similarity">
+</p>
+
+
+<p align="center">
+  <img src="/assets/images/Final_Project/HeatMap.png" alt="Heat Map of Layer 1 Feature traces">
+</p>
 
 
 
-
-
+<p align="center">
+  <img src="/assets/images/Final_Project/Similarity by Component.png" alt="Similarity by component">
+</p>
 ### Frustration Dump
 
 **I've rushed to write this section,for the reader take into account that most of my complains are probably just skill-issues, and that is not a critique to other peoples work, just my POV.**
