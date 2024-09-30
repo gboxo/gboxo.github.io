@@ -257,7 +257,19 @@ This is useful since works out of the box, and there's no need to worry about ta
 This only works because we've made the circuit full linear with the introduction of Attnetion Output SAEs, MLP Transcoders and freezing attention patterns.
 
 
+**Attribution proportion vs Threshold**
 
+
+
+Due to the difficulty of evaluating the circuits, and the lack of gold standards we focus more in measuring key metrics between circuits.
+
+After performing Hierarchical attribution, we can concatenate the attribution scores between components, this results in a extremly high dimensional tensor that represents the most important faeture to explain the fireing of a target node.
+
+
+This tensor can be further reduced by aggregating across token positions, this results in a tensor with shape (1xall_feats) that we call **computational trace**.
+
+
+We can compare the computational traces across different target features, or across different prompts that make a target feature fire.
 
 
 
@@ -268,6 +280,17 @@ This only works because we've made the circuit full linear with the introduction
 ### Frustration Dump
 
 **I've rushed to write this section,for the reader take into account that most of my complains are just skill-issues.**
+
+
+
+
+### Links to the most important resources
+
+
+- [Open Moss Repository (Hierarchical Attribution)](://localcircuitsapp-n2udcvjnuwhfzrysnksqog.streamlit.app/)
+- [Open Moss Paper](https://arxiv.org/pdf/2405.13868)
+- [Transformer Lens](https://github.com/TransformerLensOrg/TransformerLens)
+- [Neuron Pedia](https://www.neuronpedia.org/)
 
 
 
