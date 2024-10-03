@@ -1,9 +1,8 @@
 ---
 layout: post
-title: "AI Safety Fundamental Final Project"
+title: "Mechanistic Exploration Gemma 2 List Generation"
 date: 2024-09-29
 ---
-/assets/images/G/
 
 
 ## Mechanistic Exploration of Gemma 2 2b list creation
