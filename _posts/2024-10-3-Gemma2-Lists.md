@@ -50,16 +50,19 @@ To investigate the behavior of Gemma when asked for a list we create a synthetic
 
 
     *Template 1 (Base)*
+
     ```
     Provide me  a with short list of {topic}. Just provide the names, no need for any other information.
     ```
 
     *Template 2 (Contrastive)*
+
     ```
     Provide me  a with long list of {topic}. Just provide the names, no need for any other information.
     ```
 
     *Template 3*
+
     ```
     Provide me  a with list of {topic}. Just provide the names, no need for any other information.
     ```
@@ -181,12 +184,15 @@ To get a better understanding of the entropy we also corrupted the prompt for te
 - Template 1: Clean
 
     `Provide me with a short list of ... - Item 1 \n Item 2 ...`
+
 - Template 1: Corrupted (Short $\rarr$ Long)
 
     `Provide me with a long list of ... - Item 1 \n Item 2 ...`
+
 - Template 2: Clean
 
     `Provide me with a long list of ... - Item 1 \n Item 2 ...`
+
 - Template 1: Corrupted (Long $\rarr$ Short)
 
     `Provide me with a short list of ... - Item 1 \n Item 2 ...`
