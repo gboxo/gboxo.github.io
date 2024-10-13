@@ -49,22 +49,22 @@ To investigate the behavior of Gemma when asked for a list we create a synthetic
 2) We create a prompt, for Gemma:
 
 
-    *Template 1 (Base)*
+*Template 1 (Base)*
 
-        `Provide me  a with short list of {topic}. Just provide the names, no need for any other information.`
-
-
-    *Template 2 (Contrastive)*
+`Provide me  a with short list of {topic}. Just provide the names, no need for any other information.`
 
 
-        `Provide me  a with long list of {topic}. Just provide the names, no need for any other information.`
-
-    *Template 3*
-
-        `Provide me  a with list of {topic}. Just provide the names, no need for any other information.`
+*Template 2 (Contrastive)*
 
 
-    **If not otherwise indicated, all the analysis and explorations where done with template 1**
+`Provide me  a with long list of {topic}. Just provide the names, no need for any other information.`
+
+*Template 3*
+
+`Provide me  a with list of {topic}. Just provide the names, no need for any other information.`
+
+
+**If not otherwise indicated, all the analysis and explorations where done with template 1**
 
 3) For each topic, we sample 10 Gemma Completions with top-k = 0.9 and temperature=0.8
 
