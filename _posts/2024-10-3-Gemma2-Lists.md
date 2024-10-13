@@ -372,10 +372,10 @@ In the investigation we selected 5 layers for RS SAEs and 5 layers for Attn SAEs
 
 #### Heatmaps
 
-| ![Clustermap Res 5](/assets/images/Gemma2_Lists/heatmap_res_5.png) | ![Clustermap Res 20](/assets/images/Gemma2_Lists/heatmap_res_20.png) |
+| ![Heatmap Res 5](/assets/images/Gemma2_Lists/heatmap_res_5.png) | ![Heatmap Res 20](/assets/images/Gemma2_Lists/heatmap_res_20.png) |
 |--------------------------------------------------------------------------|----------------------------------------------------------------------------|
 | **Clustermap Res 5**                                                    | **Clustermap Res 20**                                                    |
-| ![Clustermap Attn 7](/assets/images/Gemma2_Lists/heatmap_attn_7.png) | ![Clustermap Attn 14](/assets/images/Gemma2_Lists/heatmap_attn_14.png) |
+| ![Heatmap Attn 7](/assets/images/Gemma2_Lists/heatmap_attn_7.png) | ![Heatmap Attn 14](/assets/images/Gemma2_Lists/heatmap_attn_14.png) |
 | **Clustermap Attn 7**                                                   | **Clustermap Attn 14**                                                   |
 
 
@@ -386,6 +386,252 @@ In the investigation we selected 5 layers for RS SAEs and 5 layers for Attn SAEs
 
 ### 7. Causal ablation of RS features over the layers
 
+
+
+#### Average difference between base and ablation
+
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>diversity_mean</th>
+      <th>diversity_variance</th>
+      <th>n_items_mean</th>
+      <th>n_items_variance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Animals</th>
+      <td>0.322300</td>
+      <td>0.179901</td>
+      <td>8.371429</td>
+      <td>32.371429</td>
+    </tr>
+    <tr>
+      <th>Books</th>
+      <td>0.289517</td>
+      <td>0.118605</td>
+      <td>4.807143</td>
+      <td>13.842857</td>
+    </tr>
+    <tr>
+      <th>Capital Cities</th>
+      <td>0.145818</td>
+      <td>0.082653</td>
+      <td>8.052381</td>
+      <td>35.028571</td>
+    </tr>
+    <tr>
+      <th>Car Brands</th>
+      <td>0.279907</td>
+      <td>0.060890</td>
+      <td>8.780952</td>
+      <td>22.542857</td>
+    </tr>
+    <tr>
+      <th>City Names</th>
+      <td>0.155626</td>
+      <td>0.041292</td>
+      <td>5.421429</td>
+      <td>16.814286</td>
+    </tr>
+    <tr>
+      <th>Colors</th>
+      <td>0.327869</td>
+      <td>0.191291</td>
+      <td>8.426190</td>
+      <td>30.985714</td>
+    </tr>
+    <tr>
+      <th>Companies</th>
+      <td>0.102732</td>
+      <td>0.048914</td>
+      <td>5.259524</td>
+      <td>21.985714</td>
+    </tr>
+    <tr>
+      <th>Countries</th>
+      <td>0.318873</td>
+      <td>0.129684</td>
+      <td>7.290476</td>
+      <td>25.600000</td>
+    </tr>
+    <tr>
+      <th>Famous Scientists</th>
+      <td>0.048153</td>
+      <td>0.003429</td>
+      <td>0.533333</td>
+      <td>0.342857</td>
+    </tr>
+    <tr>
+      <th>Famous Writers</th>
+      <td>0.105085</td>
+      <td>0.032860</td>
+      <td>2.757143</td>
+      <td>8.685714</td>
+    </tr>
+    <tr>
+      <th>Fruits</th>
+      <td>0.387794</td>
+      <td>0.083724</td>
+      <td>6.297619</td>
+      <td>15.214286</td>
+    </tr>
+    <tr>
+      <th>Inventions</th>
+      <td>0.208251</td>
+      <td>0.088154</td>
+      <td>9.502381</td>
+      <td>37.300000</td>
+    </tr>
+    <tr>
+      <th>Languages</th>
+      <td>0.421391</td>
+      <td>0.257328</td>
+      <td>10.019048</td>
+      <td>37.542857</td>
+    </tr>
+    <tr>
+      <th>Mountains</th>
+      <td>0.436039</td>
+      <td>0.134403</td>
+      <td>8.673810</td>
+      <td>23.900000</td>
+    </tr>
+    <tr>
+      <th>Movies</th>
+      <td>0.370672</td>
+      <td>0.177356</td>
+      <td>6.178571</td>
+      <td>19.214286</td>
+    </tr>
+    <tr>
+      <th>Ocean</th>
+      <td>0.104637</td>
+      <td>0.087586</td>
+      <td>2.683333</td>
+      <td>10.957143</td>
+    </tr>
+    <tr>
+      <th>Rivers</th>
+      <td>0.112220</td>
+      <td>0.031009</td>
+      <td>2.326190</td>
+      <td>7.385714</td>
+    </tr>
+    <tr>
+      <th>Sports</th>
+      <td>0.061543</td>
+      <td>0.012598</td>
+      <td>1.326190</td>
+      <td>3.385714</td>
+    </tr>
+    <tr>
+      <th>TV Shows</th>
+      <td>0.188230</td>
+      <td>0.051777</td>
+      <td>6.240476</td>
+      <td>19.300000</td>
+    </tr>
+    <tr>
+      <th>Types of Flowers</th>
+      <td>0.021870</td>
+      <td>0.005216</td>
+      <td>0.366667</td>
+      <td>0.771429</td>
+    </tr>
+    <tr>
+      <th>Types of Trees</th>
+      <td>0.111400</td>
+      <td>0.035255</td>
+      <td>3.771429</td>
+      <td>13.771429</td>
+    </tr>
+    <tr>
+      <th>Vegetables</th>
+      <td>0.335448</td>
+      <td>0.094947</td>
+      <td>4.721429</td>
+      <td>10.042857</td>
+    </tr>
+    <tr>
+      <th>Video Games</th>
+      <td>0.411398</td>
+      <td>0.107417</td>
+      <td>3.838095</td>
+      <td>5.742857</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+#### Average difference between base and ablation
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>diversity_mean</th>
+      <th>diversity_variance</th>
+      <th>n_items_mean</th>
+      <th>n_items_variance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>attn_layer_14</th>
+      <td>0.111443</td>
+      <td>0.048028</td>
+      <td>1.963043</td>
+      <td>6.213043</td>
+    </tr>
+    <tr>
+      <th>attn_layer_18</th>
+      <td>0.065051</td>
+      <td>0.028595</td>
+      <td>0.718116</td>
+      <td>1.526087</td>
+    </tr>
+    <tr>
+      <th>attn_layer_2</th>
+      <td>0.221969</td>
+      <td>0.064955</td>
+      <td>3.265217</td>
+      <td>8.373913</td>
+    </tr>
+    <tr>
+      <th>attn_layer_22</th>
+      <td>0.069707</td>
+      <td>0.035557</td>
+      <td>0.989855</td>
+      <td>2.765217</td>
+    </tr>
+    <tr>
+      <th>attn_layer_7</th>
+      <td>0.177179</td>
+      <td>0.043048</td>
+      <td>1.983333</td>
+      <td>3.073913</td>
+    </tr>
+    <tr>
+      <th>res_layer_0</th>
+      <td>0.628397</td>
+      <td>0.325129</td>
+      <td>22.221739</td>
+      <td>82.069565</td>
+    </tr>
+    <tr>
+      <th>res_layer_7</th>
+      <td>0.329185</td>
+      <td>0.080516</td>
+      <td>7.098551</td>
+      <td>21.591304</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Appendix
 
