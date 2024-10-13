@@ -42,9 +42,9 @@ To investigate the behavior of Gemma when asked for a list we create a synthetic
 
 1) We ask GPT4-o to provide a list of topics to create lists about.
 
-    This results in 23 final topics, that we will ask Gemma 2 to create lists about.
+This results in 23 final topics, that we will ask Gemma 2 to create lists about.
 
-    Some examples, of those are: *Vegetables, Countries, Movies, Colors, etc*
+Some examples, of those are: *Vegetables, Countries, Movies, Colors, etc*
 
 2) We create a prompt, for Gemma:
 
@@ -360,8 +360,40 @@ In the investigation we selected 5 layers for RS SAEs and 5 layers for Attn SAEs
 #### Attribution
 
 
+Given the vast number of features that get activated in the dataset it's important to pin down the most important features for the  behavior we are investigating, to do so we use Attribution techniques.
+
+Concretely we wan to obtain the most important featurs that explain a given metric. This metric should reflect the behavior we are interested in.
+
+In this case, given that we are interested in the "list ending behavior" a suitable metric can be the logit difference between the blank token and the line break token logits, at the position just before the end of the list.
+
+
+We run attribution experiments for all the Attention and RS SAEs (one by one) across all the dataset, and keep the top (pos, feature) tuples.
+
+
+This results in a large collection of feature, for various layers and model components  that are relevant for the list ending behavior.
+
+With this collection of features we can proceed to visualize, the overlap of the important features, which hopefully will reveal some structure.
+
+To aid in the visualitzation of the features we employ *Heatmaps* and *Cluster Maps*.
+
+
+
 
 #### Cluster Maps
+
+
+Loosely inspired in the visualization tool employed in Bio Informatics know as "Gene Expression Matrix", we plot the most important features for a given layer and component across the whole dataset.
+
+The x-axis corresponds to the different samples, and the y-axis with the important features, we visualize the degree of feature expression as the normalized activation of the feature in sample.
+Hierarchical clustering is performed to both the features and samples.
+
+
+
+
+
+
+
+
 
 | ![Clustermap Res 5](/assets/images/Gemma2_Lists/clustermap_res_5.png) | ![Clustermap Res 20](/assets/images/Gemma2_Lists/clustermap_res_20.png) |
 |--------------------------------------------------------------------------|----------------------------------------------------------------------------|
@@ -370,7 +402,26 @@ In the investigation we selected 5 layers for RS SAEs and 5 layers for Attn SAEs
 | **Clustermap Attn 7**                                                   | **Clustermap Attn 14**                                                   |
 
 
+
+
+The basic information that this plots provide is whether or not there are communities of featuers that strongly activate for a subset of samples. Given that the dataset is composed of samples for various topics some local communities are expected to exists.
+
+
+One such example of "local community" would be the left-hand bottom cornet of the RS5 cluster map.
+
+
+The opposite example of local communities are the lightly colored areas that go from one side to the other in the Cluster Maps, this correspond to features that are important to explain the metric across all the dataset.
+
+
+
 #### Heatmaps
+
+
+
+Heatmaps are another visualization tool that also help's us to visualize which features are important to explain the metric across the whole dataset.
+
+
+For ease f visualization is this case, the activations agre aggregated across topic examples.
 
 | ![Heatmap Res 5](/assets/images/Gemma2_Lists/heatmap_res_5.png) | ![Heatmap Res 20](/assets/images/Gemma2_Lists/heatmap_res_20.png) |
 |--------------------------------------------------------------------------|----------------------------------------------------------------------------|
@@ -379,10 +430,19 @@ In the investigation we selected 5 layers for RS SAEs and 5 layers for Attn SAEs
 | **Clustermap Attn 7**                                                   | **Clustermap Attn 14**                                                   |
 
 
+This type of visualization is very useful to get an idea about the dispersion of important features trough out the layers and components.
+
+
+For examples we can see that the important features for the RS in layer 20 is much more homogeneous than the important features for Attention Output in layer 14.
+
+
 #### Feature Explanations
 
 
 Some cherry-picked examples of important features trought-out the dataset.
+
+
+
 
 | Feature                | Explanation                                                                                     |
 |-----------------------|-------------------------------------------------------------------------------------------------|
@@ -396,11 +456,66 @@ Some cherry-picked examples of important features trought-out the dataset.
 
 
 
+After inspecting the most important features for the multiple layers and components, some conclusion can be drawn:
+
+- Given a dataset and a metric there exist at least 2 families of features: Features that are important across the whole dataset and features that are important for a subset of the dataset.
+- It's very important to properly weight the evidence provided by the explanations of featuers, given that it's behavior in the dataset distribution might differ slightly.
+- Some of the features, are sensible, such as the short feature or the featuers that activate only on the last element of a list, but one must be careful with the conclusions.
+
+
+
 ### 7. Causal ablation of RS features over the layers
 
 
 
+
+Once we have a broad idea of the most important features that explain a given metric, we must set-up experiments to empirically test whether or not the features affect in the expected way the behavior we are interested in.
+
+To this end we performed causal ablation experiments that consisted in setting to 0 the top 5 most important (pos,features) and generating completions. This allowed us to investigate whether or not the list ending behavior was maintained.
+
+
+*As 10/14, it's my understanding that this type of ablation is not supported in SAELens due to a bug in the JumpReLU implementation* [GitHub Issue](https://github.com/jbloomAus/SAELens/issues/326) *the solution is a one-liner*
+
+**Method**
+
+- For a given component and layer SAE. (one-by-one)
+
+- For each sample, we zero ablate the top-5 (position, features).
+
+- Then we generate completions (without any other ablation) and recorded key metrics.
+
+
+**Metrics**
+
+- Number of items
+- Shannon Index for Items across a topic
+- Number of tokens
+- Number of repeated Items for each generation
+
+
+
+
+This metrics are important, because early experiments showed that some ablations resulted in the model not ending the list but entering a loop where it repeated some items over and over again.
+
+
+
+
 #### Average difference between base and ablation
+
+
+After running the ablation experiments for each SAE being studied, the results are the following.
+
+
+The following is a tale that reports some statistics for the element-wise difference between the Generation with ablation and the base generation metrics.
+
+
+
+Concretely we report the:
+- Average  S-Index difference across a topic
+- Variance in S-Index difference across a topic
+- Average Number of items difference across a topic
+- Variance in Number of items difference across a topic
+
 
 
 | Feature                | diversity_mean | diversity_variance | n_items_mean | n_items_variance |
@@ -430,7 +545,18 @@ Some cherry-picked examples of important features trought-out the dataset.
 | Video Games           | 0.411398       | 0.107417            | 3.838095      | 5.742857          |
 
 
+
+
+We can see that for most of the topics, the main metric that we care about, the Mean difference in number of items, is greater thatn 1, which indicates a suppression of the list ending behavior after the ablation.
+
+
+
+
 #### Average difference between base and ablation
+
+
+
+If we aggregate the relevant metrics across the different SAEs we can observe that some of them have a larger effect in suppressing the list ending behavior.
 
 |                | diversity_mean | diversity_variance | n_items_mean | n_items_variance |
 |----------------|----------------|---------------------|---------------|-------------------|
@@ -442,26 +568,44 @@ Some cherry-picked examples of important features trought-out the dataset.
 | res_layer_0    |      0.628397  |          0.325129   |    22.221739  |       82.069565   |
 | res_layer_7    |      0.329185  |          0.080516   |     7.098551  |       21.591304   |
 
-### Appendix
-
-**Item break vs White space Locations**
-
-**Should we divide Logit Lens by temperature**
-
-**Heuristic for selecting the layers**
-
-**Activation patching**
-
-One of the nicest properties of this setup is that due to the instruction tuning of the model is very easy to induces certain model behaviors with minimal changes in the prompt.
 
 
-In this case just changing the tokens "short list with a few" with "long list with a many" make the model output much longer list, and hence display different list ending behaviors for a given prompt.
+One impressive example of this, is the SAE in the RS in layer 0, upon close inspection, the top-5 features for this SAE where very related to the short token, after ablation the average number of items is close to the Template 2.
+
+For the other SAEs the resulting number of tokens was close to the Template 3.
 
 
-This enables easy creation of the contrastive templates.
+The SAEs with less than 1 extra item in average can be classified as not effective at suppressing the list ending behavior.
 
 
 
-With this easy trick we are in an very similar situation (while not perfectly analogous ) to the IOI paper.
 
-This enable simple patching experiments to identify crucial model components for the list ending behavior to occur.
+## Conclusions and Future Directions
+
+In summary applying Mechanistic Interpretability techniques in real world problems is not straight forward, and many compromises and assumptions must be made. This work pretended to be a first approximation in using MI techniques in scenarios that more resemble the real world.
+
+Even though some amount of progress has been made into attacking this problem, this investigation falls short to the goals of mechanistic interpretability. 
+
+As a field in construction, it's my perception that still there's no consensus in the degree of proof that one should hold to state that something if ruled by a certain mechanism.
+
+While the empiric results are encouraging, (full elimination of the list ending behavior with just 5 edits), the results are not satisfactory.
+
+*Even though ablating some key features prevents the list ending behavior, other simple methods do it also like restricted sampling, or steering vectors. MI techniques like the those used in this investigation should be benchmarked against simple alternatives*
+
+**Future Work**
+
+There are many things that have been left out of this investigation and would be interesting as follow-up work.
+
+
+- Benchmark of the different heuristics for selecting the layers (memory vs circuit faithfulness)
+- Use the known technique for feature explanation in the dataset of interest
+- Use Transcoders and hierarchical attribution to obtain full linear circuits.[Open MOSS Hierarchical Attribution](https://arxiv.org/pdf/2405.13868)  [Related Post](https://gboxo.github.io/2024/09/29/Final-Project-Local-Circuits.html)
+
+
+
+
+
+
+
+
+
