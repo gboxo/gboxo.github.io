@@ -51,17 +51,17 @@ To investigate the behavior of Gemma when asked for a list we create a synthetic
 
     *Template 1 (Base)*
 
-    `Provide me  a with short list of {topic}. Just provide the names, no need for any other information.`
+        `Provide me  a with short list of {topic}. Just provide the names, no need for any other information.`
 
 
     *Template 2 (Contrastive)*
 
 
-    `Provide me  a with long list of {topic}. Just provide the names, no need for any other information.`
+        `Provide me  a with long list of {topic}. Just provide the names, no need for any other information.`
 
     *Template 3*
 
-    `Provide me  a with list of {topic}. Just provide the names, no need for any other information.`
+        `Provide me  a with list of {topic}. Just provide the names, no need for any other information.`
 
 
     **If not otherwise indicated, all the analysis and explorations where done with template 1**
