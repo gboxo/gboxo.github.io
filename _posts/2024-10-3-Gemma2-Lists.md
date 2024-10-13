@@ -345,19 +345,17 @@ Proper benchmarks are needed to rate this heuristics.
 In the investigation we selected 5 layers for RS SAEs and 5 layers for Attn SAEs with mixture of patching and guessing by plots.
 
 
-<div style="text-align: center;">
 
 | SAE | Layers |
 |:-------:|-----------:|
 | Attn | 2, 7, 14, 18, 22 |
 | RS | 0, 5, 10, 15, 20 |
-</div>
 
 
 
 
 
-### 8. Causal ablation of RS features over the layers
+### 7. Causal ablation of RS features over the layers
 
 
 ### Appendix
