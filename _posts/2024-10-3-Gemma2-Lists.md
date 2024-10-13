@@ -316,7 +316,10 @@ The layers 20 to 26 seem the most relevant when it comes to express this directi
 
 
 
-### 6. Feature Attribution
+### 6. Sparse Autoencoders
+
+
+
 
 
 Following the release of Gemma 2 2b, Google Deep Mind released a suite of sparse autoencoders trained of the model activations with multiple levels of sparsity, location, and dictionary size.
@@ -351,6 +354,30 @@ In the investigation we selected 5 layers for RS SAEs and 5 layers for Attn SAEs
 | Attn | 2, 7, 14, 18, 22 |
 | RS | 0, 5, 10, 15, 20 |
 
+
+#### Attribution
+
+
+
+#### Cluster Maps
+
+| ![Clustermap Res 5](/assets/images/Gemma2_Lists/clustermap_res_5.png) | ![Clustermap Res 20](/assets/images/Gemma2_Lists/clustermap_res_20.png) |
+|--------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| **Clustermap Res 5**                                                    | **Clustermap Res 20**                                                    |
+| ![Clustermap Attn 7](/assets/images/Gemma2_Lists/clustermap_attn_7.png) | ![Clustermap Attn 14](/assets/images/Gemma2_Lists/clustermap_attn_14.png) |
+| **Clustermap Attn 7**                                                   | **Clustermap Attn 14**                                                   |
+
+
+#### Heatmaps
+
+| ![Clustermap Res 5](/assets/images/Gemma2_Lists/heatmap_res_5.png) | ![Clustermap Res 20](/assets/images/Gemma2_Lists/heatmap_res_20.png) |
+|--------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| **Clustermap Res 5**                                                    | **Clustermap Res 20**                                                    |
+| ![Clustermap Attn 7](/assets/images/Gemma2_Lists/heatmap_attn_7.png) | ![Clustermap Attn 14](/assets/images/Gemma2_Lists/heatmap_attn_14.png) |
+| **Clustermap Attn 7**                                                   | **Clustermap Attn 14**                                                   |
+
+
+#### Feature Explanations
 
 
 
