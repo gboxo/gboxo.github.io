@@ -380,7 +380,15 @@ In the investigation we selected 5 layers for RS SAEs and 5 layers for Attn SAEs
 
 
 #### Feature Explanations
-
+| Feature                | Explanation                                                                                     |
+|-----------------------|-------------------------------------------------------------------------------------------------|
+| att_2_5935       | Attends to the term "short" from associated terms that follow in the sequence                  |
+| res_20_1491      | Formatting or structural elements in the text                                                  |
+| res_0_16057      | Instances of the word "sign" or related variations                                             |
+| att_22_7623      | Attends to tokens that end with punctuation marks                                               |
+| att_14_6034      | Attends to punctuation marks from selected preceding tokens                                     |
+| res_20_2045      | Repeated elements or patterns in the text                                                      |
+| res_10_12277     | Mentions of quantities, particularly focusing on "three" and "four"                           |
 
 
 
