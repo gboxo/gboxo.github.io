@@ -230,7 +230,6 @@ Which might indicate that the model wasn't expecting the list to end due to intr
 
 We can also do the opposite analysis, we can generate completions for prompts asking for long lists (Template 2).
 
-
 <p align="center">
   <img src="/assets/images/Gemma2_Lists/Entropy-item-last-tok-long-corrupted.png" alt="Entropy Item Last Token Long Corrupted" />
 </p>
