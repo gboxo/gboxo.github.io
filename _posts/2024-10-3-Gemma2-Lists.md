@@ -5,33 +5,32 @@ date: 2024-10-03
 ---
 
 
-## Mechanistic Exploration of Gemma 2 2b list creation
 
 
-### 0. Abstract
-
+### Abstract
 
 
 
-Sparse Autoencoders (SAEs) have recently emerged as powerful tools for exploring the mechanisms of large language models (LLMs) with greater granularity compared to previous methods. Despite the great potential of SAEs, concrete and non-trivial applications remain elusive (**honorable mentions** [Goodfire AI](https://goodfire.ai/blog/research-preview/),  [Golden Gate Claude](https://www.anthropic.com/news/golden-gate-claude) ) . This situation motivated the present investigation into how Gemma 2 2b Instructed generates lists. Specifically, we conduct an exploratory analysis to understand how the model determines when to end a list. To achieve this, we utilize the suite of SAEs known as [GemmaScope](https://huggingface.co/google/gemma-scope). Although initial traction has been gained on this problem, a concrete mechanism remains elusive. However, several key results are significant for how MI should approach non-trivial problems.
+Sparse Autoencoders (SAEs) have recently emerged as powerful tools for exploring the mechanisms of large language models (LLMs) with greater granularity compared to previous methods. Despite the great potential of SAEs, concrete and non-trivial applications remain elusive (with honorable mentions to [Goodfire AI](https://goodfire.ai/blog/research-preview/) and [Golden Gate Claude](https://www.anthropic.com/news/golden-gate-claude)). This situation motivated the present investigation into how Gemma 2 2b Instructed generates lists. Specifically, we conduct an exploratory analysis to understand how the model determines when to end a list. To achieve this, we utilize the suite of SAEs known as [GemmaScope](https://huggingface.co/google/gemma-scope). Although initial traction has been gained on this problem, a concrete mechanism remains elusive. However, several key results are significant for how MI should approach non-trivial problems.
 
 
 ### 1. Introduction
 
-Gemma 2 2b is a Small Language Model, created by google made public in the summer of 2024. This model was released along a suite of Sparse Autoenocders and Transcoders trained on their activations in various locations.
 
-Despite it's size the model, is incredible capable, excelling in it's instruction tuned variant with the ability to follow instruction and with similar performance to the original GPT-3 model on some benchmarks.
+Gemma 2 2b is a small language model created by Google and made public in the summer of 2024. This model was released alongside a suite of Sparse Autoencoders and Transcoders trained on their activations in various locations.
 
-This facts makes Gemma 2 2b a great candidate to perform MI experiments on, offering a great balance between performance and size.
+Despite its size, the model is incredibly capable, excelling in its instruction-tuned variant with the ability to follow instructions and demonstrating performance similar to the original GPT-3 model on some benchmarks.
 
-In this post we will explore the mechanisms behind Gemma 2 2b's ability to create lists of items, when prompted to.
+These facts make Gemma 2 2b a great candidate for performing MI experiments, offering an excellent balance between performance and size.
 
-Specially we are interested in the mechanism by which Gemma knows when to end a list, this is task is interesting for the following reasons:
+In this post, we will explore the mechanisms behind Gemma 2 2b's ability to create lists of items when prompted.
 
-- Due to the larger Gemma 2 vocabulary is easy to create one token per item list templates, avoiding the mess of position indexing.
-- The instruction tuning of the model, enables the induction of different behaviors in model responses with minimal  changes in the prompt.
-- The open endedness of this task enables taking into account sampling dynamics in the decoding process of the model (this is temperature and sampling method).
-- The template structure enables a clear analysis of apriori very broad properties of the model like "list ending behavior" by proxies such as the probability of outputing a hypen after a list item which clearly indicates that the list is about to continue.
+Specifically, we are interested in the mechanism by which Gemma knows when to end a list. This task is interesting for the following reasons:
+
+- Due to Gemma 2's larger vocabulary, it is easy to create one-token-per-item list templates, avoiding the complications of position indexing.
+- The instruction tuning of the model enables the induction of different behaviors in model responses with minimal changes in the prompt.
+- The open-endedness of this task allows for consideration of sampling dynamics in the decoding process of the model (such as temperature and sampling method).
+- The template structure enables a clear analysis of a priori very broad properties of the model, like "list ending behavior," using proxies such as the probability of outputting a hyphen after a list item, which clearly indicates that the list is about to continue.
 
 
 
@@ -377,14 +376,12 @@ To aid in the visualization of the features we employ *Heat maps* and *Cluster M
 
 
 
-
 #### Cluster Maps
 
+Loosely inspired by the visualization tool used in bioinformatics known as the "Gene Expression Matrix," we plot the most important features for a given layer and component across the entire dataset.
 
-Loosely inspired in the visualization tool employed in Bio Informatics know as "Gene Expression Matrix", we plot the most important features for a given layer and component across the whole dataset.
+The x-axis corresponds to the different samples, while the y-axis represents the important features. We visualize the degree of feature expression as the normalized activation of each feature in the samples. Hierarchical clustering is performed on both the features and the samples.
 
-The x-axis corresponds to the different samples, and the y-axis with the important features, we visualize the degree of feature expression as the normalized activation of the feature in sample.
-Hierarchical clustering is performed to both the features and samples.
 
 
 
@@ -400,24 +397,20 @@ Hierarchical clustering is performed to both the features and samples.
 
 
 
-The basic information that this plots provide is whether or not there are communities of features that strongly activate for a subset of samples. Given that the dataset is composed of samples for various topics some local communities are expected to exists.
+The basic information that these plots provide is whether there are communities of features that strongly activate for a subset of samples. Given that the dataset is composed of samples from various topics, some local communities are expected to exist.
 
+One example of a "local community" would be the lower-left corner of the RS5 cluster map.
 
-One such example of "local community" would be the left-hand bottom cornet of the RS5 cluster map.
-
-
-The opposite example of local communities are the lightly colored areas that go from one side to the other in the Cluster Maps, this correspond to features that are important to explain the metric across all the dataset.
-
-
+In contrast, the lightly colored areas that span from one side to the other in the cluster maps correspond to features that are important for explaining the metric across the entire dataset.
 
 #### Heatmaps
 
+Heatmaps are another visualization tool that helps us visualize which features are important for explaining the metric across the whole dataset.
+
+For ease of visualization, in this case, the activations were aggregated across topics.
+The basic information that these plots provide is whether or not there are communities of features that strongly activate for a subset of samples. Given that the dataset is composed of samples for various topics some local communities are expected to exists.
 
 
-Heatmaps are another visualization tool that also help's us to visualize which features are important to explain the metric across the whole dataset.
-
-
-For ease of visualization, in this case the activations were aggregated across topic.
 
 | ![Heatmap Res 5](/assets/images/Gemma2_Lists/heatmap_res_5.png) | ![Heatmap Res 20](/assets/images/Gemma2_Lists/heatmap_res_20.png) |
 |--------------------------------------------------------------------------|----------------------------------------------------------------------------|
@@ -425,11 +418,9 @@ For ease of visualization, in this case the activations were aggregated across t
 | ![Heatmap Attn 7](/assets/images/Gemma2_Lists/heatmap_attn_7.png) | ![Heatmap Attn 14](/assets/images/Gemma2_Lists/heatmap_attn_14.png) |
 | **Clustermap Attn 7**                                                   | **Clustermap Attn 14**                                                   |
 
+This type of visualization is very useful for understanding the dispersion of important features throughout the layers and components.
 
-This type of visualization is very useful to get an idea about the dispersion of important features trough out the layers and components.
-
-
-For examples we can see that the important features for the RS in layer 20 is much more homogeneous than the important features for Attention Output in layer 14.
+For example, we can see that the important features for the RS in layer 20 are much more homogeneous than the important features for the Attention Output in layer 14.
 
 
 #### Feature Explanations
@@ -452,66 +443,49 @@ Some cherry-picked examples of important features trough-out the dataset.
 
 
 
-After inspecting the most important features for the multiple layers and components, some conclusion can be drawn:
+After inspecting the most important features across multiple layers and components, several conclusions can be drawn:
 
-- Given a dataset and a metric there exist at least 2 families of features: Features that are important across the whole dataset and features that are important for a subset of the dataset.
-- It's very important to properly weight the evidence provided by the explanations of features, given that it's behavior in the dataset distribution might differ slightly.
-- Some of the features, are sensible, such as the short feature or the features that activate only on the last element of a list, but one must be careful with the conclusions.
+- Given a dataset and a metric, there exist at least two families of features: features that are important across the entire dataset and features that are important for a subset of the dataset.
+- It is crucial to properly weigh the evidence provided by the explanations of features, as their behavior in the dataset distribution may differ slightly.
+- Some features are sensitive, such as short features or those that activate only on the last element of a list, so one must be careful with the conclusions drawn.
 
+### 7. Causal Ablation of SAE Features Across the Layers
 
+Once we have a broad understanding of the most important features that explain a given metric, we must set up experiments to empirically test whether these features affect the behavior we are interested in as expected.
 
-### 7. Causal ablation of SAE features over the layers
+To this end, we performed causal ablation experiments that involved setting the top five most important (position, features) to zero and generating completions. This allowed us to investigate whether the list-ending behavior was maintained.
 
-
-
-
-Once we have a broad idea of the most important features that explain a given metric, we must set-up experiments to empirically test whether or not the features affect in the expected way the behavior we are interested in.
-
-To this end we performed causal ablation experiments that consisted in setting to 0 the top 5 most important (pos,features) and generating completions. This allowed us to investigate whether or not the list ending behavior was maintained.
-
-
-*As 10/14, it's my understanding that this type of ablation is not supported in SAELens for Gemma 2 2b due to a bug in the JumpReLU implementation* [GitHub Issue](https://github.com/jbloomAus/SAELens/issues/326) *the solution is a one-liner*
+*As of 10/14, it is my understanding that this type of ablation is not supported in SAELens for Gemma 2 2b due to a bug in the JumpReLU implementation* [GitHub Issue](https://github.com/jbloomAus/SAELens/issues/326) *— the solution is a one-liner.*
 
 **Method**
 
-- For a given component and layer SAE. (one-by-one)
-
-- For each sample, we zero ablate the top-5 (position, features).
-
-- Then we generate completions (without any other ablation) and recorded key metrics.
-
+- For a given component and layer in SAE (one by one):
+  - For each sample, we zero-ablate the top five (position, features).
+  - Then we generate completions (without any other ablation) and record key metrics.
 
 **Metrics**
 
 - Number of items
-- Shannon Index for Items across a topic
+- Shannon Index for items across a topic
 - Number of tokens
-- Number of repeated Items for each generation
+- Number of repeated items for each generation
 
-
-
-
-This metrics are important, because early experiments showed that some ablations resulted in the model not ending the list but entering a loop were it repeated some items over and over again.
-
+These metrics are important because early experiments showed that some ablations resulted in the model not ending the list but instead entering a loop where it repeated some items over and over again.
 
 
 
 #### Average difference between base and ablation
 
+After running the ablation experiments for each SAE being studied, the results are as follows:
 
-After running the ablation experiments for each SAE being studied, the results are the following.
+The table below reports some statistics for the element-wise difference between the generation with ablation and the base generation metrics.
 
+Specifically, we report the following:
 
-The following is a table that reports some statistics for the element-wise difference between the generation with ablation and the base generation metrics.
-
-
-
-Concretely we report the:
-- Average  S-Index difference across a topic
+- Average S-Index difference across a topic
 - Variance in S-Index difference across a topic
-- Average Number of items difference across a topic
-- Variance in Number of items difference across a topic
-
+- Average number of items difference across a topic
+- Variance in number of items difference across a topic
 
 
 | Feature                | diversity_mean | diversity_variance | n_items_mean | n_items_variance |
@@ -578,25 +552,23 @@ The SAEs with less than 1 extra item in average can be classified as not effecti
 
 ## Conclusions and Future Directions
 
-In summary applying Mechanistic Interpretability techniques in real world problems is not straight forward, and many compromises and assumptions must be made. This work pretended to be a first approximation in using MI techniques in scenarios that more resemble the real world.
+In summary, applying Mechanistic Interpretability techniques to real-world problems is not straightforward, and many compromises and assumptions must be made. This work aims to be a first approximation in using MI techniques in scenarios that more closely resemble the real world.
 
-Even though some amount of progress has been made into attacking this problem, this investigation falls short to the goals of mechanistic interpretability. 
+Although some progress has been made in addressing this problem, this investigation falls short of the goals of mechanistic interpretability.
 
-As a field in construction, it's my perception that still there's no consensus in the degree of proof that one should hold to state that something if ruled by a certain mechanism.
+As a developing field, I perceive that there is still no consensus on the level of proof required to assert that something is governed by a certain mechanism.
 
-While the empiric results are encouraging, (full elimination of the list ending behavior with just 5 edits), the results are not fully satisfactory.
+While the empirical results are encouraging (full elimination of the list-ending behavior with just five edits), the results are not entirely satisfactory.
 
-*Even though ablating some key features prevents the list ending behavior, other simple methods do it also like restricted sampling, or steering vectors. MI techniques like the those used in this investigation should be benchmarked against simple alternatives*
+*Even though ablating some key features prevents the list-ending behavior, other simple methods, such as restricted sampling or steering vectors, can achieve similar results. MI techniques like those used in this investigation should be benchmarked against these simpler alternatives.*
 
 **Future Work**
 
-There are many things that have been left out of this investigation and would be interesting as follow-up work.
+There are many aspects that have been left out of this investigation that would be interesting as follow-up work:
 
-- Benchmark of the different heuristics for selecting the layers (memory vs circuit faithfulness)
-- Use the known technique for feature explanation in the dataset of interest
-- Use Transcoders and hierarchical attribution to obtain full linear circuits.[Open MOSS Hierarchical Attribution](https://arxiv.org/pdf/2405.13868)  [Related Post](https://gboxo.github.io/2024/09/29/Final-Project-Local-Circuits.html)
-
-
+- Benchmarking different heuristics for selecting layers (memory vs. circuit faithfulness)
+- Applying known techniques for feature explanation to the dataset of interest
+- Using transcoders and hierarchical attribution to obtain full linear circuits. [Open MOSS Hierarchical Attribution](https://arxiv.org/pdf/2405.13868)  [Related Post](https://gboxo.github.io/2024/09/29/Final-Project-Local-Circuits.html)
 
 
 
