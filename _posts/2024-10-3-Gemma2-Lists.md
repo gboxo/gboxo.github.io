@@ -460,7 +460,7 @@ After inspecting the most important features for the multiple layers and compone
 
 
 
-### 7. Causal ablation of RS features over the layers
+### 7. Causal ablation of SAE features over the layers
 
 
 
