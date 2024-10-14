@@ -64,7 +64,7 @@ This results in 23 final topics, that we will ask Gemma 2 to create lists about.
 `Provide me  a with list of {topic}. Just provide the names, no need for any other information.`
 
 
-**If not otherwise indicated, all the analysis and explorations where done with template 1**
+**If not otherwise indicated, all the analysis and explorations were done with template 1**
 
 3) For each topic, we sample 5 Gemma Completions with top-k = 0.9 and temperature=0.8
 
@@ -93,7 +93,7 @@ Just provide the names, no need for any other information.</n>
 
 
 
-1) Most of the item's in the list where a single token.
+1) Most of the item's in the list were a single token.
     
 As expected most of the item in the lists generated spanned just a single token, virtue of the large size of Gemma's vocabulary.
 
@@ -105,7 +105,7 @@ As expected most of the item in the lists generated spanned just a single token,
   <img src="/assets/images/Gemma2_Lists/Token-Statistics-Temp.png" alt="Token Statistics Temp" />
 </p>
 
-For our prompt template, and with a few and notable exceptions most of the items in the lists where one-token long, this is likely a result of the expanded vocabulary size of Gemma 2 (roughly 5 times bigger than the one from GPT2 models).   Some notable exceptions where topics like Oceans, Cities or Countries.
+For our prompt template, and with a few and notable exceptions most of the items in the lists were one-token long, this is likely a result of the expanded vocabulary size of Gemma 2 (roughly 5 times bigger than the one from GPT2 models).   Some notable exceptions were topics like Oceans, Cities or Countries.
 
 
 2) For all the topics, in the last few items in the list the model sampled white space tokens after the item and before the line break.
@@ -127,7 +127,7 @@ We further investigate this behavior using attribution techniques.
 
 3) The number of items in each list with a white space added is pretty consistent across topics, with a few outliers.
 
-In most of the cases just the last item in the list had the blank token, this was not the case though for some topics where more than just the last item had the strange blank token.
+In most of the cases just the last item in the list had the blank token, this was not the case though for some topics were more than just the last item had the strange blank token.
 
 
 
@@ -141,7 +141,7 @@ This is expected, given the fact that greater temperatures, might push the model
   <img src="/assets/images/Gemma2_Lists/Fraction-Blankcs.png" alt="Fraction Blankcs" />
 </p>
 
-6) For prompts, where we asked for a long list, the average number of items is 30, and we no longer observe an abudance of white space tokens at the end of the list.
+6) For prompts, were we asked for a long list, the average number of items is 30, and we no longer observe an abudance of white space tokens at the end of the list.
 
 
 Table with the number of items generated for each template,  across topics and samples.
@@ -194,10 +194,10 @@ To get a better understanding of the entropy we also corrupted the prompt for te
     `Provide me with a short list of ... - Item 1 \n Item 2 ...`
 
 
-The arrow indicates that the token " short" or " long" where replaced while maintaining the rest of the Instruction + Generated List intact.
+The arrow indicates that the token " short" or " long" were replaced while maintaining the rest of the Instruction + Generated List intact.
 
 
-It's important to note that the generated lists either long or short where not changed, just the short/long token.
+It's important to note that the generated lists either long or short were not changed, just the short/long token.
 
 Also note, tat there's a left padding hence the x-axis size is not representative of the average number of items in generated lists.
 
@@ -417,7 +417,7 @@ The opposite example of local communities are the lightly colored areas that go 
 Heatmaps are another visualization tool that also help's us to visualize which features are important to explain the metric across the whole dataset.
 
 
-For ease of visualization, in this case the activations where aggregated across topic.
+For ease of visualization, in this case the activations were aggregated across topic.
 
 | ![Heatmap Res 5](/assets/images/Gemma2_Lists/heatmap_res_5.png) | ![Heatmap Res 20](/assets/images/Gemma2_Lists/heatmap_res_20.png) |
 |--------------------------------------------------------------------------|----------------------------------------------------------------------------|
@@ -491,7 +491,7 @@ To this end we performed causal ablation experiments that consisted in setting t
 
 
 
-This metrics are important, because early experiments showed that some ablations resulted in the model not ending the list but entering a loop where it repeated some items over and over again.
+This metrics are important, because early experiments showed that some ablations resulted in the model not ending the list but entering a loop were it repeated some items over and over again.
 
 
 
@@ -566,7 +566,7 @@ If we aggregate the relevant metrics across the different SAEs we can observe th
 
 
 
-One impressive example of this, is the SAE in the RS in layer 0, upon close inspection, the top-5 features for this SAE where very related to the short token, after ablation the average number of items is close to the Template 2.
+One impressive example of this, is the SAE in the RS in layer 0, upon close inspection, the top-5 features for this SAE were very related to the short token, after ablation the average number of items is close to the Template 2.
 
 For the other SAEs the resulting number of tokens was close to the Template 3.
 
