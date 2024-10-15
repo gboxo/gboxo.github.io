@@ -21,16 +21,19 @@ permalink: /about/
 }
 
 
+Hello, I’m Gerard Boxó.
 
-Hi, I'm Gerard Boxó
+I am currently pursuing a Master’s degree in Bioinformatics in Barcelona. My primary area of interest is Mechanistic Interpretability (MI), where I investigate how machine learning models, both LLMs and BIOML, can be made more transparent and understandable.
 
-I'm a Bioinformatics MCs student based on Barcelona. My main focus is on Mechanistic Interpretability. I created this blog to share my experiments, thoughts ,walktrougs of MI papers, and much more.
+This blog serves as a documentation of my journey, where I share experiments, insights, and detailed analyses of significant MI research papers.
+
+My goal is to provide valuable information for to anyone interested in Mechanistic Interpretability. I encourage you to explore the content, leave comments, and connect with me as I continue my learning journey.
+
 
 
 ### Connect with me:
 
-- [LinkedIn](www.linkedin.com/in/
-gerard-boxó-corominas-183598275
+- [LinkedIn](www.linkedin.com/in/gerard-boxó-corominas-183598275
 )
 - [Twitter](https://twitter.com/uadeoif)
 - [GitHub](https://github.com/gboxo)
