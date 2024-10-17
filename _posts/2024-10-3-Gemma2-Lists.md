@@ -11,32 +11,30 @@ date: 2024-10-03
 
 
 
-Sparse Autoencoders (SAEs) have recently emerged as powerful tools for exploring the mechanisms of large language models (LLMs) with greater granularity compared to previous methods. Despite the great potential of SAEs, concrete and non-trivial applications remain elusive (with honorable mentions to [Goodfire AI](https://goodfire.ai/blog/research-preview/) and [Golden Gate Claude](https://www.anthropic.com/news/golden-gate-claude)). This situation motivated the present investigation into how Gemma 2 2b Instructed generates lists. Specifically, we conduct an exploratory analysis to understand how the model determines when to end a list. To achieve this, we utilize the suite of SAEs known as [GemmaScope](https://huggingface.co/google/gemma-scope). Although initial traction has been gained on this problem, a concrete mechanism remains elusive. However, several key results are significant for how MI should approach non-trivial problems.
+Sparse Autoencoders (SAEs) have recently emerged as powerful tools for exploring the mechanisms of large language models (LLMs) with greater granularity compared to previous methods. Despite the great potential of SAEs, concrete and non-trivial applications remain elusive (with honorable mentions for [Goodfire AI](https://goodfire.ai/blog/research-preview/) and [Golden Gate Claude](https://www.anthropic.com/news/golden-gate-claude)). This situation motivated the present investigation into how Gemma 2 2b Instructed generates lists. Specifically, we conduct an exploratory analysis to understand how the model determines when to end a list. To achieve this, we utilize the suite of SAEs known as [GemmaScope](https://huggingface.co/google/gemma-scope). Although initial traction has been gained on this problem, a concrete mechanism remains elusive. However, several key results are significant for how MI should approach non-trivial problems.
 
 
 ### 1. Introduction
 
 
-Gemma 2 2b is a small language model created by Google and made public in the summer of 2024. This model was released alongside a suite of Sparse Autoencoders and Transcoders trained on their activations in various locations.
+Gemma 2 2b is a small language model created by Google and made public in the summer of 2024. This model was released alongside a suite of Sparse Autoencoders and Transcoders trained on its activations in various locations.
 
 Despite its size, the model is incredibly capable, excelling in its instruction-tuned variant with the ability to follow instructions and demonstrating performance similar to the original GPT-3 model on some benchmarks.
 
-These facts make Gemma 2 2b a great candidate for performing MI experiments, offering an excellent balance between performance and size.
+These facts make Gemma 2 2b a great candidate for performing Mechanistic Interpretability (MI) experiments, offering an excellent balance between performance and size.
 
-In this post, we will explore the mechanisms behind Gemma 2 2b's ability to create lists of items when prompted.
-
-Specifically, we are interested in the mechanism by which Gemma knows when to end a list. This task is interesting for the following reasons:
+In this post, I will explore the mechanisms behind Gemma 2 2b's ability to create lists of items when prompted. Specifically, I will focus on the mechanism by which Gemma knows when to end a list. This task is interesting for several reasons:
 
 - Due to Gemma 2's larger vocabulary, it is easy to create one-token-per-item list templates, avoiding the complications of position indexing.
 - The instruction tuning of the model enables the induction of different behaviors in model responses with minimal changes in the prompt.
-- The open-endedness of this task allows for consideration of sampling dynamics in the decoding process of the model (such as temperature and sampling method).
-- The template structure enables a clear analysis of a priori very broad properties of the model, like "list ending behavior," using proxies such as the probability of outputting a hyphen after a list item, which clearly indicates that the list is about to continue.
+- The open-endedness of this task allows for consideration of sampling dynamics in the model's decoding process (such as temperature and sampling method).
+- The template structure enables a clear analysis of very broad properties of the model, like "list ending behavior," using proxies such as the probability of outputting a hyphen after a list item, which clearly indicates that the list is about to continue.
 
 
 
 ### 2.Data
 
-To investigate the behavior of Gemma when asked for a list we create a synthetic dataset of model responses to several templates.
+To investigate the behavior of Gemma when asked for a list  synthetic dataset of model responses to several templates.
 
 
 1) We ask GPT4-o to provide a list of topics to create lists about.
