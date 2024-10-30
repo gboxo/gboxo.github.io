@@ -1,6 +1,6 @@
 ---
 layout: redirect
-title: "Download PDF"
+title: "AI Policy Hackathon"
 date: 2024-10-30
 ---
 
