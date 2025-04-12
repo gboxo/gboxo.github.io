@@ -17,7 +17,7 @@ permalink: /about/
 
 
 
-![Profile Picture](/assets/images/profile_picture.jpeg){: .profile-picture {
+![Profile Picture](/assets/images/profile_picture.jpg){: .profile-picture {
 }
 
 
