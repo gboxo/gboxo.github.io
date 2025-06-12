@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Sparse Autoencoders in Protein Engineering Campaigns: Steering and Model Diffing 
-date: 2025-02-15
+date: 2025-05-27
 ---
 
 <meta http-equiv="refresh" content="0; url={{ site.baseurl }}/assets/sae_enzymes.pdf" />
