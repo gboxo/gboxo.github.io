@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Sparse Autoencoders in Protein Engineering Campaigns: Steering and Model Diffing 
+title: "Sparse Autoencoders in Protein Engineering Campaigns: Steering and Model Diffing"
 date: 2025-05-27
 ---
 

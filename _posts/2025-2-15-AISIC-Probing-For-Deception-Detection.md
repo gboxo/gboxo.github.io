@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AISC: Probing for Deception Detection
+title: "AISC: Probing for Deception Detection"
 date: 2025-02-15
 ---
 
