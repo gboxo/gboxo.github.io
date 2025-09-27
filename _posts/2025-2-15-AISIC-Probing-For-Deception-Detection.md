@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "AISC: Probing for Deception Detection"
-date: 2025-02-15
+date: 2025-02-15 10:00:00 -0500
+categories: research papers
+redirect_to: /assets/AISC_paper.pdf
 ---
-
-<meta http-equiv="refresh" content="0; url={{ site.baseurl }}/assets/AISC_paper.pdf" />
-<p>If you are not redirected automatically, follow this <a href="{{ site.baseurl }}/assets/AISC_paper.pdf">link to the PDF</a>.</p>

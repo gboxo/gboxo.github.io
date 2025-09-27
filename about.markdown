@@ -3,7 +3,7 @@ layout: page
 title: About
 permalink: /about/
 ---
-<link rel="stylesheet" href="custom.css">
+<link rel="stylesheet" href="{{ '/assets/custom.css' | relative_url }}">
 <style>
  .profile-picture {
     display: block;

@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "Sparse Autoencoders in Protein Engineering Campaigns: Steering and Model Diffing"
-date: 2025-05-27
+date: 2025-05-27 10:00:00 -0500
+categories: research papers
+redirect_to: /assets/sae_enzymes.pdf
 ---
-
-<meta http-equiv="refresh" content="0; url={{ site.baseurl }}/assets/sae_enzymes.pdf" />
-<p>If you are not redirected automatically, follow this <a href="{{ site.baseurl }}/assets/sae_enzymes.pdf">link to the PDF</a>.</p>
