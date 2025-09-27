@@ -31,6 +31,7 @@ github_username:  gboxo
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-redirect-from
 
 # Include logs-www directory in the build
 include:

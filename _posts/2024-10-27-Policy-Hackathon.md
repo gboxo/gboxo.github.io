@@ -1,8 +1,7 @@
 ---
-layout: redirect
+layout: post
 title: "AI Policy Hackathon"
-date: 2024-10-30
+date: 2024-10-27 10:00:00 -0500
+categories: hackathon
+redirect_to: /assets/AI Policy Hackathon.pdf
 ---
-
-<meta http-equiv="refresh" content="0; url={{ site.baseurl }}/assets/AI Policy Hackathon.pdf" />
-<p>If you are not redirected automatically, follow this <a href="{{ site.baseurl }}/assets/AI Policy Hackathon.pdf">link to the PDF</a>.</p>

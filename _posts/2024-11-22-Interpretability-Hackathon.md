@@ -1,8 +1,7 @@
 ---
-layout: redirect
+layout: post
 title: "Interpretability Hackathon"
-date: 2024-11-22
+date: 2024-11-22 10:00:00 -0500
+categories: hackathon
+redirect_to: /assets/interp_hackathon.pdf
 ---
-
-<meta http-equiv="refresh" content="0; url={{ site.baseurl }}/assets/interp_hackathon.pdf" />
-<p>If you are not redirected automatically, follow this <a href="{{ site.baseurl }}/assets/interp_hackathon.pdf">link to the PDF</a>.</p>
