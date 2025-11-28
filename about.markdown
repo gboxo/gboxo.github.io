@@ -16,17 +16,19 @@ research_interests:
 education:
   - icon: "fas fa-graduation-cap"
     title: "MSc in Bioinformatics"
-    excerpt: "Universitat Autònoma de Barcelona (UAB)<br>_Focus: Computational Biology, Machine Learning_"
+    excerpt: "Universitat Autònoma de Barcelona (UAB)<br> Focus: Computational Biology, Machine Learning "
   - icon: "fas fa-university"
     title: "BSc in Statistics"
-    excerpt: "Universitat Politècnica de Catalunya (UPC), Barcelona<br>_Focus: Statistics, Data Science_"
+    excerpt: "Universitat Politècnica de Catalunya (UPC), Barcelona<br> Focus: Statistics, Data Science "
 ---
 
-Hello! I’m **Gerard Boxó**, an MSc graduate with an interdisciplinary background in Statistics and Bioinformatics based in Barcelona.
+Hello, I'm **Gerard Boxó**.
 
-My work sits at the intersection of **Artificial Intelligence** and **Biology**. I am deeply invested in **Mechanistic Interpretability (MI)**, working to decipher the black-box nature of modern machine learning models—from Large Language Models (LLMs) to Biological ML systems.
+I am a researcher based in Barcelona, specializing in the intersection of Machine Learning and Biology. My primary work focuses on developing and applying ML methods to **protein engineering**, leveraging techniques ranging from Reinforcement Learning on protein language models to Mechanistic Interpretability.
 
-This blog is a living document of my research journey where I publish experiments, analyses, and insights.
+Concurrently, I conduct research on critical problems in **AI Alignment and Control**. I have found deep methodological connections between AI Safety and AIxBio—specifically in interpretability, rigorous evaluations, and applied RL.
+
+This blog serves as a repository for my research journey, where I publish experiments, analyses, and insights.
 
 ## Research Interests
 
@@ -50,8 +52,6 @@ This blog is a living document of my research journey where I publish experiment
   <h4 class="no_toc">Current Research</h4>
   I am currently focused on <strong>evaluating the capabilities of frontier models for autonomous protein design</strong>.
 </div>
-
-I have contributed to both **AI Safety** and **Computational Biology**, with past work including interpretability research applied to safety and protein engineering.
 
 ## Education
 
