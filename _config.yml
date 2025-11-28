@@ -7,22 +7,23 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://gboxo.github.io" # the base hostname & protocol for your site
 
 # Theme Settings
-theme: minimal-mistakes-jekyll
+remote_theme: "mmistakes/minimal-mistakes"
+# theme: minimal-mistakes-jekyll
 minimal_mistakes_skin: default # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Author / Sidebar
 author:
   name: "Gerard Boxó"
   avatar: "/assets/images/profile_picture.jpg"
-  bio: "Master’s student in Bioinformatics. Exploring Mechanistic Interpretability."
+  bio: "MSc graduate in Bioinformatics. Exploring Mechanistic Interpretability."
   location: "Barcelona"
   links:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/gerard-boxó-corominas-183598275"
+      url: "https://www.linkedin.com/in/gerard-boxo-183598275/?locale=es"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/uadeoif"
+      url: "https://x.com/GerardBoxo_"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/gboxo"
@@ -36,6 +37,7 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
   - jekyll-redirect-from
+  - jekyll-remote-theme
 
 # Defaults
 defaults:

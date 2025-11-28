@@ -2,6 +2,7 @@
 layout: post
 title: "AI Safety Fundamental Final Project"
 date: 2024-09-29
+categories: ai-safety
 ---
 
 

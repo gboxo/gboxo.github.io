@@ -2,6 +2,7 @@
 layout: post
 title: "Word Embeddings: A Comprehensive Guide Part 2"
 date: 2023-10-15
+categories: ai-safety
 ---
 
 # Word Embeddings: A Comprehensive Guide Part 2

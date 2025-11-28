@@ -2,6 +2,7 @@
 layout: post
 title: "My first post"
 date: 2023-05-19
+categories: ai-safety
 ---
 
 

@@ -1,5 +1,10 @@
+# Navigation
 main:
   - title: "Home"
     url: /
   - title: "About"
     url: /about/
+  - title: "AI Safety"
+    url: /ai-safety/
+  - title: "AIxBio"
+    url: /aixbio/

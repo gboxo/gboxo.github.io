@@ -2,6 +2,7 @@
 layout: post
 title: "Introduction to mechanistic Interpretability"
 date: 2023-05-19
+categories: ai-safety
 ---
 
 In the second post on my blog, I will present a brief introduction to the main goals and methods of Mechanistic Interpretability (MI), as well as its history.
