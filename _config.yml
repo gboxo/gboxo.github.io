@@ -15,7 +15,7 @@ minimal_mistakes_skin: air # "air", "aqua", "contrast", "dark", "dirt", "neon", 
 author:
   name: "Gerard Boxó"
   avatar: "/assets/images/pfp.png"
-  bio: "MSc graduate in Bioinformatics. Exploring Mechanistic Interpretability."
+  bio: "Researcher in AI Safety & AIxBio. MSc in Bioinformatics."
   location: "Barcelona"
   links:
     - label: "LinkedIn"
