@@ -2,6 +2,7 @@
 layout: post
 title: "Mechanistic Exploration Gemma 2 List Generation"
 date: 2024-10-03
+categories: ai-safety
 ---
 
 

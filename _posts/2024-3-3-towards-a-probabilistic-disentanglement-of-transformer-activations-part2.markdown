@@ -2,6 +2,7 @@
 layout: post
 title: "Towards a Probabilistic Disentanglement of Transformer Activations Part 2"
 date: 2024-3-3
+categories: ai-safety
 ---
 
 This is the second post in our series dedicated to exploring methods around dictionary learning, and the possibility of a probabilistic take on the disentanglement of transformer activations into interpretable monosemantic features.
