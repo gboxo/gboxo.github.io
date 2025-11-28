@@ -9,7 +9,7 @@ url: "https://gboxo.github.io" # the base hostname & protocol for your site
 # Theme Settings
 remote_theme: "mmistakes/minimal-mistakes"
 # theme: minimal-mistakes-jekyll
-minimal_mistakes_skin: default # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin: air # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Author / Sidebar
 author:
@@ -52,13 +52,19 @@ defaults:
       comments: true
       share: true
       related: true
+      header:
+        overlay_image: /assets/images/banner.jpeg
+        overlay_filter: 0.5
   # _pages
   - scope:
-      path: "_pages"
+      path: ""
       type: pages
     values:
       layout: single
       author_profile: true
+      header:
+        overlay_image: /assets/images/banner.jpeg
+        overlay_filter: 0.5
 
 # Sass/SCSS
 sass:

@@ -15,6 +15,6 @@ This past weekend, our team ran a hackathon to answer this question. We benchmar
 
 The results suggest AI could meaningfully accelerate protein engineering. 💡
 
-[Check out our full analysis and interactive visualization](https://lnkd.in/dwgsrV3m)
+[Check out our full analysis and interactive visualization](https://raulcdinardi.github.io/nanobody-visualization-site/)
 
 Let's discuss how AI is reshaping biodefense and drug development! 💬
