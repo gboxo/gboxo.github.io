@@ -27,6 +27,9 @@ author:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/gboxo"
+    - label: "Curriculum Vitae"
+      icon: "fas fa-fw fa-file-pdf"
+      url: "/assets/CV%20Gerard.pdf"
 
 # Navigation
 # Make sure _data/navigation.yml exists
