@@ -37,11 +37,3 @@ Welcome to my research blog. I explore the inner workings of **Artificial Intell
     </div>
   </div>
 </div>
-
----
-
-<h3 class="archive__subtitle">Latest Posts</h3>
-
-{% for post in site.posts limit:5 %}
-  {% include archive-single.html %}
-{% endfor %}
