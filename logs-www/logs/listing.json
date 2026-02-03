@@ -44,7 +44,11 @@
     "model": "openai-api/deepseek/deepseek-reasoner",
     "started_at": "2025-10-26T11:56:07+01:00",
     "completed_at": "2025-10-26T12:22:22+01:00",
-    "primary_metric": null
+    "primary_metric": {
+      "name": "accuracy",
+      "value": 0,
+      "params": {}
+    }
   },
   "2025-10-27T16-03-20+01-00_protein-easy-tasks_4XNBrSp5QzGTeF9DNbtiS5.eval": {
     "eval_id": "ZuYpsJoLHX5KMk8z9PkX75",
