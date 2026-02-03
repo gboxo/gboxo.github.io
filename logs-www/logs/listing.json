@@ -15,5 +15,52 @@
       "value": 0.6923076923076923,
       "params": {}
     }
+  },
+  "2025-10-25T17-55-33+02-00_protein-hard-tasks_cwouh7FwkVAoGdQ9cDr4aW.eval": {
+    "eval_id": "WYgjE4q5iUEpuXnMM9W7sC",
+    "run_id": "kdjcznq8Amyi5rd7eqpypW",
+    "task": "protein_hard_tasks",
+    "task_id": "cwouh7FwkVAoGdQ9cDr4aW",
+    "task_version": 0,
+    "version": 2,
+    "status": "success",
+    "model": "openai-api/deepseek/deepseek-reasoner",
+    "started_at": "2025-10-25T17:55:33+02:00",
+    "completed_at": "2025-10-25T18:10:27+02:00",
+    "primary_metric": {
+      "name": "accuracy",
+      "value": 0.45,
+      "params": {}
+    }
+  },
+  "2025-10-26T11-56-07+01-00_protein-medium-tasks_Xn24deaUdojHmnwdkUTWEa.eval": {
+    "eval_id": "mKE5j5baQ4yZPQgqv3YFBB",
+    "run_id": "ivWbwoawRvvxKxuvDaEBbG",
+    "task": "protein_medium_tasks",
+    "task_id": "Xn24deaUdojHmnwdkUTWEa",
+    "task_version": 0,
+    "version": 2,
+    "status": "cancelled",
+    "model": "openai-api/deepseek/deepseek-reasoner",
+    "started_at": "2025-10-26T11:56:07+01:00",
+    "completed_at": "2025-10-26T12:22:22+01:00",
+    "primary_metric": null
+  },
+  "2025-10-27T16-03-20+01-00_protein-easy-tasks_4XNBrSp5QzGTeF9DNbtiS5.eval": {
+    "eval_id": "ZuYpsJoLHX5KMk8z9PkX75",
+    "run_id": "VuECtbpQnk9PXDmx2rKxP9",
+    "task": "protein_easy_tasks",
+    "task_id": "4XNBrSp5QzGTeF9DNbtiS5",
+    "task_version": 0,
+    "version": 2,
+    "status": "success",
+    "model": "openai-api/deepseek/deepseek-reasoner",
+    "started_at": "2025-10-27T16:03:20+01:00",
+    "completed_at": "2025-10-27T16:12:03+01:00",
+    "primary_metric": {
+      "name": "accuracy",
+      "value": 0.96,
+      "params": {}
+    }
   }
 }
