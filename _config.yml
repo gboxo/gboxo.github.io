@@ -6,68 +6,40 @@ description: >-
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://gboxo.github.io" # the base hostname & protocol for your site
 
-# Theme Settings
-remote_theme: "mmistakes/minimal-mistakes"
-# theme: minimal-mistakes-jekyll
-minimal_mistakes_skin: air # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
-
-# Author / Sidebar
+# Author
 author:
   name: "Gerard Boxó"
-  avatar: "/assets/images/pfp.png"
   bio: "Researcher in AI Safety & AIxBio. MSc in Bioinformatics."
-  location: "Barcelona"
   links:
     - label: "LinkedIn"
-      icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/gerard-boxo-183598275/?locale=es"
     - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
       url: "https://x.com/GerardBoxo_"
     - label: "GitHub"
-      icon: "fab fa-fw fa-github"
       url: "https://github.com/gboxo"
-    - label: "Curriculum Vitae"
-      icon: "fas fa-fw fa-file-pdf"
+    - label: "CV"
       url: "/assets/CV%20Gerard.pdf"
 
 # Navigation
-# Make sure _data/navigation.yml exists
 locale: "en-US"
 
 # Build Settings
 plugins:
   - jekyll-feed
-  - jekyll-include-cache
   - jekyll-redirect-from
-  - jekyll-remote-theme
 
 # Defaults
 defaults:
-  # _posts
   - scope:
       path: ""
       type: posts
     values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
-      header:
-        overlay_image: /assets/images/banner.jpeg
-        overlay_filter: 0.5
-  # _pages
+      layout: post
   - scope:
       path: ""
       type: pages
     values:
-      layout: single
-      author_profile: true
-      header:
-        overlay_image: /assets/images/banner.jpeg
-        overlay_filter: 0.5
+      layout: page
 
 # Sass/SCSS
 sass:
@@ -76,3 +48,4 @@ sass:
 
 include:
   - logs-www
+  - aixbio-hackathon

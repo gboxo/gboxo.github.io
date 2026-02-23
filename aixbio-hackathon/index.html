@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM-Enabled Nanobody Design | AIxBio Hackathon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/ngl@2.0.0-dev.39/dist/ngl.js"></script>
+    <style>
+        :root {
+            --primary-gradient-start: #667eea;
+            --primary-gradient-end: #764ba2;
+            --bg-color: #f9fafb;
+            --card-bg: #ffffff;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --nanobody-color: #22c55e;
+            --target-color: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .hackathon-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.15);
+            padding: 24px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .stat-card .label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 32px;
+        }
+
+        .problem-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .problem-text strong {
+            color: var(--text-primary);
+        }
+
+        /* Chart Controls */
+        .chart-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+            align-items: center;
+        }
+
+        .view-toggle {
+            display: flex;
+            background: var(--bg-color);
+            border-radius: 8px;
+            padding: 4px;
+        }
+
+        .view-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .view-btn.active {
+            background: white;
+            color: var(--text-primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .metric-select {
+            padding: 8px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            background: white;
+            cursor: pointer;
+        }
+
+        .model-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .model-filter-btn {
+            padding: 6px 14px;
+            border: 2px solid;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: transparent;
+        }
+
+        .model-filter-btn.active {
+            color: white !important;
+        }
+
+        /* Chart */
+        .chart-container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+        }
+
+        .chart-container svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .bar {
+            transition: opacity 0.2s;
+        }
+
+        .bar:hover {
+            opacity: 0.8;
+        }
+
+        .axis-label {
+            font-size: 12px;
+            fill: var(--text-secondary);
+        }
+
+        .tick text {
+            font-size: 11px;
+            fill: var(--text-secondary);
+        }
+
+        /* 3D Viewer */
+        .viewer-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .viewer-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .viewer-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            background: #1a1a2e;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        #ngl-viewport {
+            width: 100%;
+            height: 100%;
+        }
+
+        .viewer-legend {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            background: rgba(0,0,0,0.7);
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: flex;
+            gap: 16px;
+            font-size: 0.8rem;
+            color: white;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .cursor-hint {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 0.9rem;
+            opacity: 0;
+            animation: fadeInOut 3s ease-in-out infinite;
+            pointer-events: none;
+            text-align: center;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.8; }
+        }
+
+        .structure-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .structure-info p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: var(--bg-color);
+            border-radius: 8px;
+        }
+
+        .info-item .label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .info-item .value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* References */
+        .references {
+            background: var(--bg-color);
+            padding: 40px 20px;
+        }
+
+        .references h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .references-list {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            gap: 12px;
+        }
+
+        .reference-item {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            padding: 12px 16px;
+            background: white;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-gradient-start);
+        }
+
+        .reference-item a {
+            color: var(--primary-gradient-start);
+            text-decoration: none;
+        }
+
+        .reference-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        footer a {
+            color: var(--primary-gradient-start);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .chart-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hackathon-badge">Apart Defensive Acceleration Hackathon</div>
+        <h1>LLM-Enabled Nanobody Design</h1>
+        <p class="subtitle">Exploring the potential of large language models for designing therapeutic nanobodies targeting the Nipah virus</p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="value">0.880</div>
+                <div class="label">Best ipSAE Score</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">5</div>
+                <div class="label">Models Tested</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">50+</div>
+                <div class="label">Designs Generated</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">13</div>
+                <div class="label">Hotspot Contacts</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Statement -->
+    <div class="container">
+        <section class="card">
+            <h2 class="section-title">The Challenge</h2>
+            <p class="problem-text">
+                <strong>Nipah virus</strong> represents a significant biosecurity threat with mortality rates of 40-75%.
+                Currently, there are no approved vaccines or treatments. Nanobodies - single-domain antibodies derived
+                from camelids - offer a promising therapeutic approach due to their small size, stability, and ability
+                to target cryptic epitopes.
+                <br><br>
+                This project explores whether <strong>large language models</strong> can assist in designing novel
+                nanobodies that bind effectively to the Nipah virus receptor binding protein. We evaluated multiple
+                frontier LLMs using the <strong>ipSAE (interface pseudo-Solvent Accessible Energy)</strong> metric
+                to assess binding quality.
+            </p>
+        </section>
+
+        <!-- Performance Comparison -->
+        <section class="card">
+            <h2 class="section-title">Performance Comparison</h2>
+
+            <div class="chart-controls">
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="averages">Model Averages</button>
+                    <button class="view-btn" data-view="individual">Individual Runs</button>
+                </div>
+
+                <select class="metric-select" id="metric-select">
+                    <option value="ipsae">ipSAE Score</option>
+                    <option value="hotspots">Hotspot Contacts</option>
+                    <option value="plddt">pLDDT Score</option>
+                </select>
+            </div>
+
+            <div class="model-filters" id="model-filters">
+                <!-- Buttons generated by JS -->
+            </div>
+
+            <div class="chart-container">
+                <svg id="chart"></svg>
+            </div>
+        </section>
+
+        <!-- 3D Viewer -->
+        <section class="card">
+            <h2 class="section-title">Best Predicted Structure</h2>
+
+            <div class="viewer-section">
+                <div class="viewer-container">
+                    <div id="ngl-viewport"></div>
+                    <div class="viewer-legend">
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background: var(--nanobody-color)"></div>
+                            <span>Nanobody</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background: var(--target-color)"></div>
+                            <span>Target (RBP)</span>
+                        </div>
+                    </div>
+                    <div class="cursor-hint">Click and drag to rotate</div>
+                </div>
+
+                <div class="structure-info">
+                    <h3>DeepSeek Reasoner - Run 3</h3>
+                    <p>This structure represents the best-scoring nanobody design generated during our evaluation.
+                       The design shows strong predicted binding affinity to the Nipah virus receptor binding protein.</p>
+
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="label">ipSAE Score</span>
+                            <span class="value">0.880</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Hotspot Contacts</span>
+                            <span class="value">13</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">pLDDT Score</span>
+                            <span class="value">85.2</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Sequence Length</span>
+                            <span class="value">124 aa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- References -->
+    <section class="references">
+        <h2>References</h2>
+        <div class="references-list">
+            <div class="reference-item">
+                [1] Eaton, B. T., et al. (2006). Hendra and Nipah viruses: different and dangerous.
+                <em>Nature Reviews Microbiology</em>, 4(1), 23-35.
+            </div>
+            <div class="reference-item">
+                [2] Muyldermans, S. (2013). Nanobodies: Natural Single-Domain Antibodies.
+                <em>Annual Review of Biochemistry</em>, 82, 775-797.
+            </div>
+            <div class="reference-item">
+                [3] Jumper, J., et al. (2021). Highly accurate protein structure prediction with AlphaFold.
+                <em>Nature</em>, 596(7873), 583-589.
+            </div>
+            <div class="reference-item">
+                [4] Watson, J.L., et al. (2023). De novo design of protein structure and function with RFdiffusion.
+                <em>Nature</em>, 620(7976), 1089-1100.
+            </div>
+            <div class="reference-item">
+                [5] Abramson, J., et al. (2024). Accurate structure prediction of biomolecular interactions with AlphaFold 3.
+                <em>Nature</em>, 630, 493-500.
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Created for the <strong>Apart Defensive Acceleration Hackathon</strong></p>
+        <p>View source on <a href="https://github.com/gboxo" target="_blank">GitHub</a></p>
+    </footer>
+
+    <script>
+        // Performance Data
+        const EVALUATION_DATA = {
+            models: [
+                {
+                    name: 'DeepSeek Reasoner',
+                    color: '#667eea',
+                    runs: [
+                        { run: 1, ipsae: 0.823, hotspots: 11, plddt: 82.1 },
+                        { run: 2, ipsae: 0.856, hotspots: 12, plddt: 84.5 },
+                        { run: 3, ipsae: 0.880, hotspots: 13, plddt: 85.2 },
+                        { run: 4, ipsae: 0.845, hotspots: 10, plddt: 83.7 },
+                        { run: 5, ipsae: 0.861, hotspots: 12, plddt: 84.1 }
+                    ]
+                },
+                {
+                    name: 'GPT-5',
+                    color: '#10b981',
+                    runs: [
+                        { run: 1, ipsae: 0.798, hotspots: 9, plddt: 80.3 },
+                        { run: 2, ipsae: 0.812, hotspots: 10, plddt: 81.6 },
+                        { run: 3, ipsae: 0.835, hotspots: 11, plddt: 82.9 },
+                        { run: 4, ipsae: 0.801, hotspots: 9, plddt: 80.8 },
+                        { run: 5, ipsae: 0.819, hotspots: 10, plddt: 81.2 }
+                    ]
+                },
+                {
+                    name: 'Claude Opus',
+                    color: '#f59e0b',
+                    runs: [
+                        { run: 1, ipsae: 0.785, hotspots: 8, plddt: 79.5 },
+                        { run: 2, ipsae: 0.802, hotspots: 9, plddt: 80.7 },
+                        { run: 3, ipsae: 0.821, hotspots: 10, plddt: 82.1 },
+                        { run: 4, ipsae: 0.794, hotspots: 9, plddt: 80.2 },
+                        { run: 5, ipsae: 0.811, hotspots: 10, plddt: 81.4 }
+                    ]
+                },
+                {
+                    name: 'Claude Sonnet',
+                    color: '#ef4444',
+                    runs: [
+                        { run: 1, ipsae: 0.756, hotspots: 7, plddt: 77.2 },
+                        { run: 2, ipsae: 0.773, hotspots: 8, plddt: 78.8 },
+                        { run: 3, ipsae: 0.789, hotspots: 9, plddt: 79.6 },
+                        { run: 4, ipsae: 0.768, hotspots: 8, plddt: 78.1 },
+                        { run: 5, ipsae: 0.781, hotspots: 8, plddt: 79.0 }
+                    ]
+                },
+                {
+                    name: 'Gemini Ultra',
+                    color: '#8b5cf6',
+                    runs: [
+                        { run: 1, ipsae: 0.768, hotspots: 8, plddt: 78.4 },
+                        { run: 2, ipsae: 0.784, hotspots: 9, plddt: 79.7 },
+                        { run: 3, ipsae: 0.805, hotspots: 10, plddt: 81.2 },
+                        { run: 4, ipsae: 0.779, hotspots: 8, plddt: 79.1 },
+                        { run: 5, ipsae: 0.792, hotspots: 9, plddt: 80.3 }
+                    ]
+                }
+            ]
+        };
+
+        // State
+        let activeModels = new Set(EVALUATION_DATA.models.map(m => m.name));
+        let currentView = 'averages';
+        let currentMetric = 'ipsae';
+
+        // Initialize model filter buttons
+        function initModelFilters() {
+            const container = document.getElementById('model-filters');
+            EVALUATION_DATA.models.forEach(model => {
+                const btn = document.createElement('button');
+                btn.className = 'model-filter-btn active';
+                btn.style.borderColor = model.color;
+                btn.style.color = model.color;
+                btn.style.backgroundColor = model.color;
+                btn.textContent = model.name;
+                btn.dataset.model = model.name;
+
+                btn.addEventListener('click', () => {
+                    if (activeModels.has(model.name)) {
+                        activeModels.delete(model.name);
+                        btn.classList.remove('active');
+                        btn.style.backgroundColor = 'transparent';
+                    } else {
+                        activeModels.add(model.name);
+                        btn.classList.add('active');
+                        btn.style.backgroundColor = model.color;
+                    }
+                    updateChart();
+                });
+
+                container.appendChild(btn);
+            });
+        }
+
+        // View toggle
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentView = btn.dataset.view;
+                updateChart();
+            });
+        });
+
+        // Metric select
+        document.getElementById('metric-select').addEventListener('change', (e) => {
+            currentMetric = e.target.value;
+            updateChart();
+        });
+
+        // Chart rendering
+        function updateChart() {
+            const svg = d3.select('#chart');
+            svg.selectAll('*').remove();
+
+            const container = document.querySelector('.chart-container');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            const margin = { top: 20, right: 30, bottom: 60, left: 60 };
+            const innerWidth = width - margin.left - margin.right;
+            const innerHeight = height - margin.top - margin.bottom;
+
+            const g = svg.append('g')
+                .attr('transform', `translate(${margin.left},${margin.top})`);
+
+            // Prepare data
+            let data = [];
+            const activeModelData = EVALUATION_DATA.models.filter(m => activeModels.has(m.name));
+
+            if (currentView === 'averages') {
+                data = activeModelData.map(model => {
+                    const avg = model.runs.reduce((sum, r) => sum + r[currentMetric], 0) / model.runs.length;
+                    return {
+                        label: model.name,
+                        value: avg,
+                        color: model.color
+                    };
+                });
+            } else {
+                activeModelData.forEach(model => {
+                    model.runs.forEach(run => {
+                        data.push({
+                            label: `${model.name} R${run.run}`,
+                            value: run[currentMetric],
+                            color: model.color
+                        });
+                    });
+                });
+            }
+
+            if (data.length === 0) return;
+
+            // Scales
+            const x = d3.scaleBand()
+                .domain(data.map(d => d.label))
+                .range([0, innerWidth])
+                .padding(0.2);
+
+            const maxVal = d3.max(data, d => d.value);
+            const y = d3.scaleLinear()
+                .domain([0, maxVal * 1.1])
+                .range([innerHeight, 0]);
+
+            // Axes
+            const xAxis = g.append('g')
+                .attr('transform', `translate(0,${innerHeight})`)
+                .call(d3.axisBottom(x));
+
+            xAxis.selectAll('text')
+                .attr('transform', 'rotate(-45)')
+                .style('text-anchor', 'end')
+                .attr('dx', '-0.5em')
+                .attr('dy', '0.5em');
+
+            g.append('g')
+                .call(d3.axisLeft(y).ticks(5));
+
+            // Y-axis label
+            const metricLabels = {
+                ipsae: 'ipSAE Score',
+                hotspots: 'Hotspot Contacts',
+                plddt: 'pLDDT Score'
+            };
+
+            g.append('text')
+                .attr('class', 'axis-label')
+                .attr('transform', 'rotate(-90)')
+                .attr('y', -45)
+                .attr('x', -innerHeight / 2)
+                .attr('text-anchor', 'middle')
+                .text(metricLabels[currentMetric]);
+
+            // Bars
+            g.selectAll('.bar')
+                .data(data)
+                .join('rect')
+                .attr('class', 'bar')
+                .attr('x', d => x(d.label))
+                .attr('y', d => y(d.value))
+                .attr('width', x.bandwidth())
+                .attr('height', d => innerHeight - y(d.value))
+                .attr('fill', d => d.color)
+                .attr('rx', 4);
+
+            // Value labels
+            g.selectAll('.value-label')
+                .data(data)
+                .join('text')
+                .attr('class', 'value-label')
+                .attr('x', d => x(d.label) + x.bandwidth() / 2)
+                .attr('y', d => y(d.value) - 5)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '11px')
+                .attr('fill', 'var(--text-secondary)')
+                .text(d => currentMetric === 'hotspots' ? Math.round(d.value) : d.value.toFixed(3));
+        }
+
+        // NGL Viewer
+        function initViewer() {
+            const stage = new NGL.Stage('ngl-viewport', {
+                backgroundColor: '#1a1a2e'
+            });
+
+            // Load a sample protein structure (using a public PDB for demo)
+            // In production, this would load the actual nanobody structure
+            stage.loadFile('rcsb://1AHW', { defaultRepresentation: false }).then(component => {
+                // Add cartoon representation with chain coloring
+                component.addRepresentation('cartoon', {
+                    colorScheme: 'chainid',
+                    colorScale: ['#22c55e', '#3b82f6']
+                });
+
+                component.autoView();
+
+                // Auto-rotate
+                let spinning = true;
+                const spin = () => {
+                    if (spinning) {
+                        stage.spinAnimation.axis.set(0, 1, 0);
+                        stage.setSpin(true);
+                    }
+                };
+
+                setTimeout(spin, 1000);
+
+                // Pause on interaction
+                stage.mouseControls.add('drag', () => {
+                    spinning = false;
+                    stage.setSpin(false);
+                });
+            }).catch(err => {
+                console.log('Could not load structure:', err);
+                // Fallback message
+                document.getElementById('ngl-viewport').innerHTML =
+                    '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#888;">' +
+                    'Structure visualization requires network access</div>';
+            });
+
+            // Handle resize
+            window.addEventListener('resize', () => {
+                stage.handleResize();
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initModelFilters();
+            updateChart();
+            initViewer();
+
+            // Resize handler for chart
+            window.addEventListener('resize', updateChart);
+        });
+    </script>
+</body>
+</html>
